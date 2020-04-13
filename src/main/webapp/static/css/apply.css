@@ -1,0 +1,45 @@
+.layui-form-pane .layui-input-block {
+    left: 0 !important;
+}
+
+.layui-form-pane .layui-input-block input {
+    border: none;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.layui-form-pane .layui-form-label {
+    border-radius: 0 !important;
+}
+
+.apply-form .layui-row {
+    border-right: 1px solid #e6e6e6;
+}
+
+.apply-form .layui-row .layui-form-item {
+    margin-bottom: 0 !important;
+}
+
+.apply-form .layui-form-item .layui-form-label {
+    border-bottom: none !important;
+}
+
+.apply-form .layui-form-item .layui-input {
+    border-bottom: none !important;
+}
+
+.apply-form .layui-form-text .layui-input-block {
+    top: 0 !important;
+}
+
+.apply-form .layui-form-text .layui-textarea {
+    border-bottom: 0 !important;
+}
+.form-title{
+    padding: 1rem;
+    border: 1px solid #e6e6e6;
+    border-bottom: none;
+}
+.form-title >h1{
+    text-align: center;
+}
