@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    /*overflow-x: hidden;*/
+}
+.topic{
+    background: #232325;
+    padding: 1rem 3rem;
+}
+.title-1{
+    margin-bottom: 0.8rem;
+}
+.video-part .video-description{
+    padding:0.8rem;
+    background: #f8f8f8;
+}
