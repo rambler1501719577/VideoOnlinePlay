@@ -1,28 +1,40 @@
 .rambler-header {
-    height: 65px;
-    background: #232325;
+	height: 65px;
+	background: #232325;
 }
 
-.rambler-title{
-    float:left;
-}
-.rambler-title > h1 {
-    color: #00be06;
-    margin-left:20px;
-    line-height: 65px;
-    font-weight: bold;
+.rambler-title {
+	float: left;
 }
 
-.user{
-    float:right;
-    margin-right: 10px;
+.rambler-title>h1 {
+	color: #00be06;
+	margin-left: 20px;
+	line-height: 65px;
+	font-weight: bold;
 }
 
-.user a{
-    margin-top: 15px;
-    font-size: 16px;
-    display: inline-block;
-    line-height: 35px;
-    color: #ccc;
-    margin-right: 15px;
+.user {
+	float: right;
+	margin-right: 10px;
+}
+
+.user a {
+	margin-top: 15px;
+	font-size: 16px;
+	display: inline-block;
+	line-height: 35px;
+	color: #ccc;
+	margin-right: 15px;
+}
+
+.layui-nav {
+	height: 65px;
+	background: transparent;
+}
+
+.layui-nav .layui-nav-item a {
+	height: 65px;
+	line-height: 65px;
+	margin-top:0!important;
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rambler.dao.PermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.rambler.beans.Permission" >
+<mapper namespace="com.rambler.dao.ClassifyMapper" >
+  <resultMap id="BaseResultMap" type="com.rambler.beans.Classify" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
@@ -11,19 +11,19 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from permission
+    from classify
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from permission
+    delete from classify
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.rambler.beans.Permission" >
-    insert into permission (id, name)
+  <insert id="insert" parameterType="com.rambler.beans.Classify" >
+    insert into classify (id, name)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.rambler.beans.Permission" >
-    insert into permission
+  <insert id="insertSelective" parameterType="com.rambler.beans.Classify" >
+    insert into classify
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -41,8 +41,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rambler.beans.Permission" >
-    update permission
+  <update id="updateByPrimaryKeySelective" parameterType="com.rambler.beans.Classify" >
+    update classify
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -50,8 +50,8 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.rambler.beans.Permission" >
-    update permission
+  <update id="updateByPrimaryKey" parameterType="com.rambler.beans.Classify" >
+    update classify
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

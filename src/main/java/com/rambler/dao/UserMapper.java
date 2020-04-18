@@ -3,10 +3,10 @@ package com.rambler.dao;
 import com.rambler.beans.User;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
-
 @Mapper
 public interface UserMapper {
+    int deleteByPrimaryKey(String id);
+
     int insert(User record);
 
     int insertSelective(User record);
@@ -15,6 +15,7 @@ public interface UserMapper {
 
     int updateByPrimaryKeySelective(User record);
 
-    User selectByAccount(String username);
+    int updateByPrimaryKey(User record);
 
+    User selectByAccount(String account);
 }

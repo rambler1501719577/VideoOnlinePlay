@@ -1,6 +1,6 @@
 package com.rambler.beans;
 
-public class Permission {
+public class Classify {
     private String id;
 
     private String name;

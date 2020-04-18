@@ -1,6 +1,5 @@
 package com.rambler.service;
 
-import com.rambler.beans.Role;
 import com.rambler.beans.User;
 import com.rambler.beans.UserRole;
 import com.rambler.config.Response;
@@ -47,10 +46,6 @@ public class UserService {
         } else {
             return Response.createErrorResponse("更新失败");
         }
-    }
-
-    public Role getRole(String userId) {
-        return userRoleMapper.searchRoleByUser(userId);
     }
 
     public Response addUser(User user) {

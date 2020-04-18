@@ -3,6 +3,7 @@
 <mapper namespace="com.rambler.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.rambler.beans.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
     <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -10,23 +11,46 @@
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="header" property="header" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, account, password, name, age, sex, telephone, mail
+    id, role_id, account, password, name, age, sex, telephone, mail, level, header
   </sql>
 
+  <select id="selectByAccount" resultMap="BaseResultMap">
+    select * from
+    <include refid="Table_Name"/>
+    where account = #{account}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
-
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rambler.beans.User" >
+    insert into user (id, role_id, account, 
+      password, name, age, 
+      sex, telephone, mail, 
+      level, header)
+    values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{header,jdbcType=VARCHAR})
+  </insert>
   <insert id="insertSelective" parameterType="com.rambler.beans.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
       </if>
       <if test="account != null" >
         account,
@@ -49,10 +73,19 @@
       <if test="mail != null" >
         mail,
       </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="header != null" >
+        header,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="account != null" >
         #{account,jdbcType=VARCHAR},
@@ -75,11 +108,20 @@
       <if test="mail != null" >
         #{mail,jdbcType=VARCHAR},
       </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="header != null" >
+        #{header,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.rambler.beans.User" >
     update user
     <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
       <if test="account != null" >
         account = #{account,jdbcType=VARCHAR},
       </if>
@@ -101,12 +143,27 @@
       <if test="mail != null" >
         mail = #{mail,jdbcType=VARCHAR},
       </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="header != null" >
+        header = #{header,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-
-  <!-- 通过account查询 -->
-  <select id="selectByAccount" resultMap="BaseResultMap">
-    select * from user where account = #{account}
-  </select>
+  <update id="updateByPrimaryKey" parameterType="com.rambler.beans.User" >
+    update user
+    set role_id = #{roleId,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      header = #{header,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

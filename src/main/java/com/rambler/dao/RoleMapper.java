@@ -1,7 +1,9 @@
 package com.rambler.dao;
 
 import com.rambler.beans.Role;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface RoleMapper {
     int deleteByPrimaryKey(String id);
 

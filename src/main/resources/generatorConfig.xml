@@ -6,7 +6,7 @@
 <generatorConfiguration>
 
   <!-- 数据库驱动包路径 -->
-  <classPathEntry location="E:\MavenRepository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar"/>
+  <classPathEntry location="D:\MavenRepository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar"/>
 
   <context id="default" targetRuntime="MyBatis3" defaultModelType="conditional">
 
@@ -76,7 +76,7 @@
     </javaClientGenerator>
 
     <!-- 配置表 -->
-    <table tableName="user" domainObjectName="User" enableInsert="true" enableSelectByPrimaryKey="true"
+    <table tableName="user_survey" domainObjectName="UserSurvey" enableInsert="true" enableSelectByPrimaryKey="true"
            enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableCountByExample="false"
            enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
            selectByExampleQueryId="false"/>

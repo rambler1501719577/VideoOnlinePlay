@@ -3,6 +3,8 @@ package com.rambler.beans;
 public class User {
     private String id;
 
+    private String roleId;
+
     private String account;
 
     private String password;
@@ -17,12 +19,24 @@ public class User {
 
     private String mail;
 
+    private Integer level;
+
+    private String header;
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId == null ? null : roleId.trim();
     }
 
     public String getAccount() {
@@ -79,5 +93,21 @@ public class User {
 
     public void setMail(String mail) {
         this.mail = mail == null ? null : mail.trim();
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header == null ? null : header.trim();
     }
 }
