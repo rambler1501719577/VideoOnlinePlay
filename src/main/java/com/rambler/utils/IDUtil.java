@@ -28,5 +28,4 @@ public class IDUtil {
             System.out.println(uuid());
         }
     }
-
 }

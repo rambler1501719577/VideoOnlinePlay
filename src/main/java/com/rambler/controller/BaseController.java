@@ -17,7 +17,7 @@ public class BaseController {
         // 检测用户是否登陆, 如果未登录跳转登陆页面, 否则跳到首页
         HttpSession session = request.getSession();
         if (session.getAttribute(Variable.CURRENT_USER) != null) {
-            return "index/index.ftl";
+            return "index/index.html";
         }
         return "common/login.html";
     }

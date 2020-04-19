@@ -20,7 +20,7 @@
 
   <select id="selectByAccount" resultMap="BaseResultMap">
     select * from
-    <include refid="Table_Name"/>
+    user
     where account = #{account}
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >

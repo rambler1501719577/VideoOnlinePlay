@@ -4,18 +4,27 @@ var Base = function () {
     var table = null;
     var layer = null;
     var loadUser = function () {
-        $.get("/VideoOnlinePlay/user/current", function (res) {
+        $.get("/user/current", function (res) {
             if (res.code === 200) {
-                $(".current-user").text(res.data.name);
+                $("#user-name-span").text(res.data.user.name);
+                $("#user-header-img").attr('src', res.data.user.header);
+                if (res.data.menu) {
+                    var container = $("#dynamic-menu");
+                    var menu_data = res.data.menu;
+                    for (var i = 0; i < menu_data.length; i++) {
+                        var dd = $("<dd><a href='" + menu_data[i].url + "'>" + menu_data[i].name + "</a></dd>")
+                        container.append(dd);
+                    }
+                }
             } else {
-                window.location.href = "http://localhost:8080/VideoOnlinePlay";
+                window.location.href = "http://localhost:8080/";
             }
         });
     };
     var bindEventListener = function () {
         $(".quit-btn").click(function () {
-            $.post('/VideoOnlinePlay/user/quit', {}, function (res) {
-                window.location.href = "http://localhost:8080/VideoOnlinePlay";
+            $.post('/user/quit', {}, function (res) {
+                window.location.href = "http://localhost:8080/";
             });
         });
     };

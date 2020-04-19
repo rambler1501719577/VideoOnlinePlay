@@ -1,9 +1,13 @@
 package com.rambler.service;
 
+import com.rambler.beans.Menu;
+import com.rambler.beans.Role;
 import com.rambler.beans.User;
 import com.rambler.beans.UserRole;
 import com.rambler.config.Response;
 import com.rambler.config.Variable;
+import com.rambler.dao.MenuMapper;
+import com.rambler.dao.RoleMapper;
 import com.rambler.dao.UserMapper;
 import com.rambler.dao.UserRoleMapper;
 import com.rambler.utils.IDUtil;
@@ -12,12 +16,22 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
+    private MenuMapper menuMapper;
 
     @Autowired
     private UserRoleMapper userRoleMapper;
@@ -27,7 +41,12 @@ public class UserService {
         HttpSession session = request.getSession();
         if (null != user) {
             if (user.getPassword().equals(password)) {
-                session.setAttribute(Variable.CURRENT_USER, user);
+                Role role = roleMapper.selectByPrimaryKey(user.getRoleId());
+                List<Menu> menuList = menuMapper.getMenuListByRoleId(role.getId());
+                Map<String,Object> map = new HashMap<>();
+                map.put("user",user);
+                map.put("menu",menuList);
+                session.setAttribute(Variable.CURRENT_USER, map);
                 return Response.createSuccessResponse(user);
             } else {
                 return Response.createErrorResponse("密码错误");

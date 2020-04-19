@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * @author rambler
@@ -33,9 +34,9 @@ public class UserController {
     @ResponseBody
     public Response currentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute(Variable.CURRENT_USER);
-        if (user != null) {
-            return Response.createSuccessResponse(user);
+         Map<String,Object> userMap = (Map<String,Object>)session.getAttribute(Variable.CURRENT_USER);
+        if (userMap != null) {
+            return Response.createSuccessResponse(userMap);
         } else {
             return Response.createErrorResponse("未登录");
         }
