@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
     @RequestMapping("detail")
     public String detailPage(){
-        return "index/detail.ftl";
+        return "index/detail.html";
     }
 }

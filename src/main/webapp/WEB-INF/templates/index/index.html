@@ -34,17 +34,32 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="banner">
-				<div class="banner-container layui-carousel" id="test1">
-					<div carousel-item>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
+			<div class="layui-row banner">
+				<div class="layui-col-md12">
+					<div class="banner-container layui-carousel" id="test1">
+						<div carousel-item>
+							<div><img src="../../../static/images/test.jpg" height="540px"></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
 					</div>
 				</div>
-				<div class=""></div>
+				<div class="layui-col-md3 top">
+					<ul>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+						<li><a href=""><h2>我们永不言弃我们永不言弃</h2></a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="topic">
 				<div class="layui-row layui-col-space30">
@@ -55,22 +70,8 @@
 							<a href="">体育</a>
 							<a href="">搞笑</a>
 						</span>
-						<br>
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-						</span>
 					</div>
 					<div class="layui-col-md2">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-						</span>
-						<br>
 						<span class="layui-breadcrumb" lay-separator="|">
 							<a href="">娱乐</a>
 							<a href="">八卦</a>
@@ -87,30 +88,8 @@
 							<a href="">知识</a>
 							<a href="">法律</a>
 						</span>
-						<br>
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-							<a href="">知识</a>
-							<a href="">法律</a>
-						</span>
 					</div>
 					<div class="layui-col-md5">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-							<a href="">知识</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-						</span>
-						<br>
 						<span class="layui-breadcrumb" lay-separator="|">
 							<a href="">娱乐</a>
 							<a href="">八卦</a>
@@ -280,9 +259,7 @@
 					 target="_blank" rel="nofollow" class="jubao-lk">网络举报APP下载</a> <i class="cutline"></i> <a href="//www.iqiyi.com/common/announce.html"
 					 target="_blank" rseat="711219_footer" class="jubao-lk">反盗版和反盗链权利声明</a> <i class="cutline"></i> <span class="jubao-lk unlink">违法和不良信息举报电话：400-923-7171</span>
 					<i class="cutline"></i> <span class="jubao-lk">举报邮箱：<a href="mailto:jubao365@qiyi.com" rel="nofollow" class="link-txt">jubao365@qiyi.com</a></span>
-					<span>
-						<!---->
-						<!----></span></div>
+					<span></span></div>
 			</div>
 			<div id="AR_copyright" class="copyright">
 				Copyright © 2020
@@ -296,11 +273,9 @@
 			//建造实例
 			carousel.render({
 				elem: '#test1',
-				width: '100%' //设置容器宽度
-					,
-				arrow: 'always' //始终显示箭头
-					,
-				height: '650px'
+				width: '100%', //设置容器宽度
+				arrow: 'always', //始终显示箭头
+				height: '540px'
 				//,anim: 'updown' //切换动画方式
 			});
 		});

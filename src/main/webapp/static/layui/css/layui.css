@@ -28,7 +28,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .layui-elip, .layui-form-checkbox span, .layui-form-pane .layui-form-label {
     text-overflow: ellipsis;
-    white-space: nowrap
 }
 
 .layui-breadcrumb, .layui-tree-btnGroup {
@@ -2577,8 +2576,7 @@ a cite {
 .layui-form-pane .layui-form-label {
     width: 120px;
     padding: 8px 15px;
-    height: 38px;
-    line-height: 20px;
+    line-height: 35px;
     border-width: 1px;
     border-style: solid;
     border-radius: 2px 0 0 2px;
@@ -3985,7 +3983,8 @@ body .layui-table-tips .layui-layer-content {
 }
 
 .layui-tab-title .layui-this {
-    color: #000
+    color: #000;
+	background: #e6e6e6;
 }
 
 .layui-tab-title .layui-this:after {
