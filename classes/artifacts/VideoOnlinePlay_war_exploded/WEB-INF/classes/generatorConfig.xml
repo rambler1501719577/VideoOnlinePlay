@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+    PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <!-- 数据库驱动包路径 -->
+  <classPathEntry location="D:\MavenRepository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar"/>
+
+  <context id="default" targetRuntime="MyBatis3" defaultModelType="conditional">
+
+    <!-- 生成的Java文件的编码 -->
+    <property name="javaFileEncoding" value="UTF-8"/>
+
+    <!-- 格式化java代码 -->
+    <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+
+    <!-- 格式化XML代码 -->
+    <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+    <!-- 创建Java类时是否取消生成注释 -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+      <property name="suppressDate" value="true"/>
+    </commentGenerator>
+
+    <!-- JDBC数据库连接,对应jdbc.properties这个配置文件中的内容 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://localhost:3306/video?characterEncoding=utf8"
+                    userId="root"
+                    password="1501719577">
+    </jdbcConnection>
+
+    <!--
+        java类型处理器
+        用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+        注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型；
+    -->
+    <javaTypeResolver>
+      <property name="forceBigDecimals" value="false"/>
+    </javaTypeResolver>
+
+    <!--
+        生成实体类
+        targetPackage：生成的类要放的包
+        targetProject：相对项目路径
+        具体路径: targetProject + targetPackage等于你实体类放的路径
+        如果目录不存在generator不会自动创建目录
+    -->
+    <javaModelGenerator targetPackage="com.rambler.beans" targetProject=".\src\main\java">
+      <!-- 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field -->
+      <property name="constructorBased" value="false"/>
+      <!-- 是否允许子包,也就是包下面加上表名作为包名!!!!!!!!!! -->
+      <property name="enableSubPackages" value="false"/>
+      <!-- 是否创建一个不可变的类,如果为true，那么MBG会创建一个没有setter方法的类 -->
+      <property name="immutable" value="false"/>
+      <!-- 在getter方法中，对String类型字段调用trim()方法 -->
+      <property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+
+    <!-- mapper映射文件生成所在的目录,路径和生成实体类相似 -->
+    <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+
+    <!--
+        生成Mapper接口
+        type:
+            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中）
+            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+     -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.rambler.dao" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+
+    <!-- 配置表 -->
+    <table tableName="user_survey" domainObjectName="UserSurvey" enableInsert="true" enableSelectByPrimaryKey="true"
+           enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableCountByExample="false"
+           enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"/>
+
+  </context>
+</generatorConfiguration>

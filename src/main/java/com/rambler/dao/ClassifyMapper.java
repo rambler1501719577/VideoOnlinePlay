@@ -3,6 +3,8 @@ package com.rambler.dao;
 import com.rambler.beans.Classify;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ClassifyMapper {
     int deleteByPrimaryKey(String id);
@@ -16,4 +18,8 @@ public interface ClassifyMapper {
     int updateByPrimaryKeySelective(Classify record);
 
     int updateByPrimaryKey(Classify record);
+
+    List<Classify> selectList();
+
+    Classify getByName(String name);
 }

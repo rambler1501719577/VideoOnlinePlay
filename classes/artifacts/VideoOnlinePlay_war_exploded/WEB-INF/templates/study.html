@@ -1,0 +1,98 @@
+<div class="apply-info-container" style="padding:2rem">
+    <form class="layui-form layui-form-pane apply-form">
+        <div class="form-title">
+            <h1>青年教师助教培训记录</h1>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">培训时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input time">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">培训地点</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input place">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-col-xs4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">培训人</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input people">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">培训主题</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input topic">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">组织单位</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input organization">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-col-xs12">
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">培训内容</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="" class="layui-textarea content"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row" style="border-bottom: 1px solid #e6e6e6">
+            <div class="layui-col-xs12">
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">培训心得</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入学习心得" class="layui-textarea think"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button style="float:right;margin-top:1rem" type="button" class="layui-btn" id="apply-save-btn">提交学习记录
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $("#apply-save-btn").click(function () {
+        var params = {
+            time: $(".time").val(),
+            place: $(".place").val(),
+            people: $(".people").val(),
+            topic: $(".topic").val(),
+            organization: $(".organization").val(),
+            content: $(".content").val(),
+            think: $(".think").val()
+        };
+        $.post("/VideoOnlinePlay/studyactivity/add", params, function (res) {
+            alert(res.message);
+            Base.openPage('study');
+        })
+    });
+</script>

@@ -111,54 +111,18 @@
 					<h1>模块一</h1>
 				</div>
 				<div class="layui-row layui-col-space16">
-					<div class="layui-col-md2">
-						<div class="video-part">
-							<img src="../../../static/images/1.jpg" alt="" width="100%">
-							<div class="video-description">
-								<p>钟南山：必须重视入境人员检测,钟南山：必须重视入境人员检测钟南山：必须重视入境人员检测</p>
+					<#list list as item>
+						<div class="layui-col-md2">
+							<div class="video-part">
+								<a href="/detail/${item.id}">
+									<img src="${item.coverImage}" alt="" width="100%">
+									<div class="video-description">
+										<p>${item.description}</p>
+									</div>
+								</a>
 							</div>
 						</div>
-					</div>
-					<div class="layui-col-md2">
-						<div class="video-part">
-							<img src="../../../static/images/1.jpg" alt="" width="100%">
-							<div class="video-description">
-								<p>钟南山：必须重视入境人员检测,钟南山：必须重视入境人员检测钟南山：必须重视入境人员检测</p>
-							</div>
-						</div>
-					</div>
-					<div class="layui-col-md2">
-						<div class="video-part">
-							<img src="../../../static/images/1.jpg" alt="" width="100%">
-							<div class="video-description">
-								<p>钟南山：必须重视入境人员检测,钟南山：必须重视入境人员检测钟南山：必须重视入境人员检测</p>
-							</div>
-						</div>
-					</div>
-					<div class="layui-col-md2">
-						<div class="video-part">
-							<img src="../../../static/images/1.jpg" alt="" width="100%">
-							<div class="video-description">
-								<p>钟南山：必须重视入境人员检测,钟南山：必须重视入境人员检测钟南山：必须重视入境人员检测</p>
-							</div>
-						</div>
-					</div>
-					<div class="layui-col-md2">
-						<div class="video-part">
-							<img src="../../../static/images/1.jpg" alt="" width="100%">
-							<div class="video-description">
-								<p>钟南山：必须重视入境人员检测,钟南山：必须重视入境人员检测钟南山：必须重视入境人员检测</p>
-							</div>
-						</div>
-					</div>
-					<div class="layui-col-md2">
-						<div class="video-part">
-							<img src="../../../static/images/1.jpg" alt="" width="100%">
-							<div class="video-description">
-								<p>钟南山：必须重视入境人员检测,钟南山：必须重视入境人员检测钟南山：必须重视入境人员检测</p>
-							</div>
-						</div>
-					</div>
+					</#list>
 				</div>
 			</div>
 
