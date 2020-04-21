@@ -11,10 +11,11 @@
     <result column="play_src" property="playSrc" jdbcType="VARCHAR" />
     <result column="require_level" property="requireLevel" jdbcType="INTEGER" />
     <result column="study_times" property="studyTimes" jdbcType="INTEGER" />
+    <result column="cover_image" property="coverImage" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, teacher_id, classify_id, name, description, create_time, play_src, require_level, 
-    study_times
+    study_times,coverImage
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 

@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="../../../static/css/detail.css">
 		<link rel="stylesheet" href="../../../static/css/common/footer.css">
 		<script src="../../../static/layui/layui.js"></script>
+		<script src="../../../static/js/jquery3.3.1.js"></script>
+		<!-- <script src="../../../static/js/base.js"></script> -->
+		<script src="../../../static/js/detail.js"></script>
 	</head>
 	<body>
 		<div class="rambler-header">
@@ -77,17 +80,17 @@
 									</div>
 								</li>
 							</ul>
-							<form class="layui-form layui-form-pane" action="">
+							<form class="layui-form layui-form-pane" lay-filter="comment">
 								<div class="layui-form-item layui-form-text">
 									<label class="layui-form-label">输入你的评价</label>
 									<div class="layui-input-block">
-										<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+										<textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
 									</div>
 								</div>
 								<div class="layui-form-item">
 									<div style="float:right;margin-top:10px">
 										<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-										<button class="layui-btn" type="button">立即提交</button>
+										<button class="layui-btn" id="comment-btn" type="button">立即提交</button>
 									</div>
 								</div>
 							</form>
@@ -95,173 +98,173 @@
 					</div>
 					<!--  测试  -->
 					<div class="layui-tab-item">
-						<form class="layui-form layui-form-pane" action="">
+						<form class="layui-form layui-form-pane" lay-filter="exam">
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">1. 某公司通过发行可转换债券筹集资金，每张面值为1000元，转换比率为20，则该可转换债券的转换价格为（　　）元</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 20">
-									<input type="radio" name="A" value="B" title="B : 50">
-									<input type="radio" name="A" value="C" title="C : 30">
-									<input type="radio" name="A" value="D" title="D : 25">
+									<input type="radio" name="question1" value="A" title="A : 20"><br>
+									<input type="radio" name="question1" value="B" title="B : 50"><br>
+									<input type="radio" name="question1" value="C" title="C : 30"><br>
+									<input type="radio" name="question1" value="D" title="D : 25"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">2. 下列有关可转换债券筹资的特点表述不正确的是()</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 可节约利息支出">
-									<input type="radio" name="A" value="B" title="B : 筹资效率高">
-									<input type="radio" name="A" value="C" title="C : 存在不转换的财务压力">
-									<input type="radio" name="A" value="D" title="D : 资本成本较高">
+									<input type="radio" name="question2" value="A" title="A : 可节约利息支出"><br>
+									<input type="radio" name="question2" value="B" title="B : 筹资效率高"><br>
+									<input type="radio" name="question2" value="C" title="C : 存在不转换的财务压力"><br>
+									<input type="radio" name="question2" value="D" title="D : 资本成本较高"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">3. 可转换债券持有者未来可以在事先约定的期限内选择将债券转换为普通股票，也可以放弃转换权利，持有至债券到期还本付息，这体现的可转换债券基本性质是（　　）</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 证券期权性">
-									<input type="radio" name="A" value="B" title="B : 资本转换性">
-									<input type="radio" name="A" value="C" title="C : 赎回与回售">
-									<input type="radio" name="A" value="D" title="D : 资本保全性">
+									<input type="radio" name="question3" value="A" title="A : 证券期权性"><br>
+									<input type="radio" name="question3" value="B" title="B : 资本转换性"><br>
+									<input type="radio" name="question3" value="C" title="C : 赎回与回售"><br>
+									<input type="radio" name="question3" value="D" title="D : 资本保全性"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">4.下列属于可转换债券的回售条款情形的是（　　）。　　</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 公司股票价格在一段时期内连续高于转股价格达到某一幅度"><br>
-									<input type="radio" name="A" value="B" title="B : 公司股票价格在一段时期内连续低于转股价格达到某一幅度"><br>
-									<input type="radio" name="A" value="C" title="C : 可转换债券的票面利率大于市场利率"><br>
-									<input type="radio" name="A" value="D" title="D : 可转换债券的票面利率小于市场利率"><br>
+									<input type="radio" name="question4" value="A" title="A : 公司股票价格在一段时期内连续高于转股价格达到某一幅度"><br>
+									<input type="radio" name="question4" value="B" title="B : 公司股票价格在一段时期内连续低于转股价格达到某一幅度"><br>
+									<input type="radio" name="question4" value="C" title="C : 可转换债券的票面利率大于市场利率"><br>
+									<input type="radio" name="question4" value="D" title="D : 可转换债券的票面利率小于市场利率"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">5.下列关于认股权证的特点表述错误的是（　　）。　　</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 是一种融资促进工具　"><br>
-									<input type="radio" name="A" value="B" title="B : 有助于改善上市公司的治理结构"><br>
-									<input type="radio" name="A" value="C" title="C : 有利于推进上市公司的股权激励机制"><br>
-									<input type="radio" name="A" value="D" title="D : 是一种拥有股权的证券"><br>
+									<input type="radio" name="question5" value="A" title="A : 是一种融资促进工具　"><br>
+									<input type="radio" name="question5" value="B" title="B : 有助于改善上市公司的治理结构"><br>
+									<input type="radio" name="question5" value="C" title="C : 有利于推进上市公司的股权激励机制"><br>
+									<input type="radio" name="question5" value="D" title="D : 是一种拥有股权的证券"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">6.认股权证的发行人是（　　）。　　</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 债券持有人">
-									<input type="radio" name="A" value="B" title="B : 标的股票持有人">
-									<input type="radio" name="A" value="C" title="C : 发行标的股票的上市公司">
-									<input type="radio" name="A" value="D" title="D : 发行标的股票的非上市公司">
+									<input type="radio" name="question6" value="A" title="A : 债券持有人"><br>
+									<input type="radio" name="question6" value="B" title="B : 标的股票持有人"><br>
+									<input type="radio" name="question6" value="C" title="C : 发行标的股票的上市公司"><br>
+									<input type="radio" name="question6" value="D" title="D : 发行标的股票的非上市公司"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">7.某公司2014年资金平均占用额为500万元，经分析，其中不合理部分为20万元，预计2015年销售增长8%，但资金周转下降3%。则预测2015年资金需要量为（　　）万元。　　</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 533.95">
-									<input type="radio" name="A" value="B" title="B : 556.62">
-									<input type="radio" name="A" value="C" title="C : 502.85">
-									<input type="radio" name="A" value="D" title="D : 523.8">
+									<input type="radio" name="question7" value="A" title="A : 533.95"><br>
+									<input type="radio" name="question7" value="B" title="B : 556.62"><br>
+									<input type="radio" name="question7" value="C" title="C : 502.85"><br>
+									<input type="radio" name="question7" value="D" title="D : 523.8"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">8.采用销售百分比法预测对外筹资需要量时，下列各项变动中，会使对外筹资需要量减少的是（　　）。　　</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 股利支付率提高">
-									<input type="radio" name="A" value="B" title="B : 固定资产增加">
-									<input type="radio" name="A" value="C" title="C : 应付账款增加">
-									<input type="radio" name="A" value="D" title="D : 销售净利率降低">
+									<input type="radio" name="question8" value="A" title="A : 股利支付率提高"><br>
+									<input type="radio" name="question8" value="B" title="B : 固定资产增加"><br>
+									<input type="radio" name="question8" value="C" title="C : 应付账款增加"><br>
+									<input type="radio" name="question8" value="D" title="D : 销售净利率降低"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">9.A公司2013年的经营性资产为680万元，经营性负债为260万元，销售收入为1200万元，经营性资产、经营性负债占销售收入的百分比不变，预计2014年销售增长率为10%，销售净利率为10%，股利支付率为75%，则2014年需要从外部市场筹集的资金为（　　）万元。　　</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 6">
-									<input type="radio" name="A" value="B" title="B : 7">
-									<input type="radio" name="A" value="C" title="C : 8">
-									<input type="radio" name="A" value="D" title="D : 9">
+									<input type="radio" name="question9" value="A" title="A : 6"><br>
+									<input type="radio" name="question9" value="B" title="B : 7"><br>
+									<input type="radio" name="question9" value="C" title="C : 8"><br>
+									<input type="radio" name="question9" value="D" title="D : 9"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">10.在财务管理中，将资金划分为变动资金、不变资金和半变动资金，并据以预测企业未来资金需要量的方法称为（　　）。　　</label>
 								<div class="question-body" style="border-bottom: 1px solid #e6e6e6;margin-bottom:10px;">
-									<input type="radio" name="A" value="A" title="A : 定额预测法">
-									<input type="radio" name="A" value="B" title="B : 比率预测法">
-									<input type="radio" name="A" value="C" title="C : 资金习性预测法">
-									<input type="radio" name="A" value="D" title="D : 成本习性预测法">
+									<input type="radio" name="question10" value="A" title="A : 定额预测法"><br>
+									<input type="radio" name="question10" value="B" title="B : 比率预测法"><br>
+									<input type="radio" name="question10" value="C" title="C : 资金习性预测法"><br>
+									<input type="radio" name="question10" value="D" title="D : 成本习性预测法"><br>
 								</div>
 							</div>
 							<div class="layui-form-item">
 								<div style="float:right">
-									<button class="layui-btn" type="button">提交测试</button>
+									<button class="layui-btn" type="button" id="exam-btn">提交测试</button>
 								</div>
 							</div>
 						</form>
 					</div>
 					<!--  调查问卷  -->
 					<div class="layui-tab-item">
-						<form class="layui-form layui-form-pane" action="">
+						<form class="layui-form layui-form-pane" lay-filter="questionnaire">
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">1.您现在读的是：</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 大专">
-									<input type="radio" name="A" value="B" title="B : 本科">
-									<input type="radio" name="A" value="C" title="C : 其他">
+									<input type="radio" name="question1" value="A" title="A : 大专"><br>
+									<input type="radio" name="question1" value="B" title="B : 本科"><br>
+									<input type="radio" name="question1" value="C" title="C : 其他"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">2.您认为目前的课程设置能达到您学习深造的目的吗?</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 能">
-									<input type="radio" name="A" value="B" title="B : 不能">
-									<input type="radio" name="A" value="C" title="C : 作用不大">
+									<input type="radio" name="question2" value="A" title="A : 能"><br>
+									<input type="radio" name="question2" value="B" title="B : 不能"><br>
+									<input type="radio" name="question2" value="C" title="C : 作用不大"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">3.如果您学习深造的目的是为了提高实操能力，您同意下面的哪种做法：</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 单独开设会计模拟实训课程">
-									<input type="radio" name="A" value="B" title="B : 完善教学内容，加入会计实操训练部分">
-									<input type="radio" name="A" value="C" title="C : 以上都同意">
+									<input type="radio" name="question3" value="A" title="A : 单独开设会计模拟实训课程"><br>
+									<input type="radio" name="question3" value="B" title="B : 完善教学内容，加入会计实操训练部分"><br>
+									<input type="radio" name="question3" value="C" title="C : 以上都同意"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">4.目前的教学内容能否满足会计职称考试需要？</label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 能">
-									<input type="radio" name="A" value="B" title="B : 不能">
-									<input type="radio" name="A" value="C" title="C : 不知道">
+									<input type="radio" name="question4" value="A" title="A : 能"><br>
+									<input type="radio" name="question4" value="B" title="B : 不能"><br>
+									<input type="radio" name="question4" value="C" title="C : 不知道"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">5.您觉得本专业课程的实用性如何 </label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 非常强　">
-									<input type="radio" name="A" value="B" title="B : 比较强">
-									<input type="radio" name="A" value="C" title="C : 不太强">
-									<input type="radio" name="A" value="D" title="D : 没实用性">
+									<input type="radio" name="question5" value="A" title="A : 非常强　"><br>
+									<input type="radio" name="question5" value="B" title="B : 比较强"><br>
+									<input type="radio" name="question5" value="C" title="C : 不太强"><br>
+									<input type="radio" name="question5" value="D" title="D : 没实用性"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">6.您觉得经过学习，实践能力有所提高吗？ </label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 有较大提高">
-									<input type="radio" name="A" value="B" title="B : 一般">
-									<input type="radio" name="A" value="C" title="C : 提高程度较小 ">
+									<input type="radio" name="question6" value="A" title="A : 有较大提高"><br>
+									<input type="radio" name="question6" value="B" title="B : 一般"><br>
+									<input type="radio" name="question6" value="C" title="C : 提高程度较小 "><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text">
 								<label class="layui-form-label">7. 您觉得所学专业课对掌握专业技能是否有帮助 </label>
 								<div class="question-body">
-									<input type="radio" name="A" value="A" title="A : 有很大帮助">
-									<input type="radio" name="A" value="B" title="B : 一般">
-									<input type="radio" name="A" value="C" title="C : 帮助较小">
+									<input type="radio" name="question7" value="A" title="A : 有很大帮助"><br>
+									<input type="radio" name="question7" value="B" title="B : 一般"><br>
+									<input type="radio" name="question7" value="C" title="C : 帮助较小"><br>
 								</div>
 							</div>
 							<div class="layui-form-item layui-form-text" style="margin-bottom: 10px;">
 								<label class="layui-form-label">8.您对本课程有何意见和建议</label>
 								<div class="layui-input-block">
-									<textarea name="desc" class="layui-textarea"></textarea>
+									<textarea name="question8" class="layui-textarea"></textarea>
 								</div>
 							</div>
 							<div class="layui-form-item">
 								<div style="float:right">
-									<button class="layui-btn" type="button">提交问卷</button>
+									<button class="layui-btn" type="button" id="ques-btn">提交问卷</button>
 								</div>
 							</div>
 						</form>
@@ -322,6 +325,20 @@
 	<script>
 		layui.use(['element', 'form'], function() {
 			var form = layui.form
+
+			layui.$('#comment-btn').on('click', function() {
+				var data = form.val('comment');
+				alert(JSON.stringify(data));
+			});
+			
+			layui.$('#exam-btn').on('click', function() {
+				var data = form.val('exam');
+				alert(JSON.stringify(data));
+			});
+			layui.$('#ques-btn').on('click', function() {
+				var data = form.val('questionnaire');
+				alert(JSON.stringify(data));
+			});
 		});
 	</script>
 </html>

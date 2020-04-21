@@ -21,6 +21,8 @@ public class Course {
 
     private Integer studyTimes;
 
+    private String coverImage;
+
     public String getId() {
         return id;
     }
@@ -91,5 +93,13 @@ public class Course {
 
     public void setStudyTimes(Integer studyTimes) {
         this.studyTimes = studyTimes;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 }
