@@ -34,16 +34,8 @@ public class BaseController {
         // 检测用户是否登陆, 如果未登录跳 转登陆页面, 否则跳到首页
         HttpSession session = request.getSession();
         if (session.getAttribute(Variable.CURRENT_USER) != null) {
-            Classify classify = classifyService.getClassifyByName("工程结算");
-            List<Course> courses = courseService.getCourseByClassifyId(classify.getId());
-            Map<String,Object> map = new HashMap<>();
-            map.put("list",courses);
-            try {
-                response.getWriter().println("hehe");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return "index/index.ftl";
+
+            return "index/index.html";
         }
         return "common/login.html";
     }

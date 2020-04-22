@@ -12,7 +12,11 @@ public class CourseService {
     @Autowired
     private CourseMapper courseMapper;
 
-    public List<Course> getCourseByClassifyId(String classifyId){
+    public List<Course> getCourseByClassifyId(String classifyId) {
         return courseMapper.getByClassifyId(classifyId);
+    }
+
+    public Course getCourseById(String id){
+        return courseMapper.selectByPrimaryKey(id);
     }
 }
