@@ -10,7 +10,7 @@
 		<script src="../../../static/layui/layui.js"></script>
 		<script src="../../../static/js/jquery3.3.1.js"></script>
 		 <script src="../../../static/js/base.js"></script>
-		<script src="../../../static/js/detail.js"></script>
+		 <script src="../../../static/js/detail.js"></script>
 	</head>
 	<body>
 		<div class="rambler-header">
@@ -50,35 +50,8 @@
 					<!--  评价  -->
 					<div class="layui-tab-item layui-show">
 						<div class="comment mod-post">
-							<ul>
-								<li>
-									<div class="wenda-listcon mod-qa-list post-row clearfix" data-id="611142">
-										<div class="headslider qa-medias l"> <a href="/u/1060505/courses" class="media" target="_blank" title="单单happy"><img
-												 src="//img.mukewang.com/5716ebe900015f9a04330398-40-40.jpg" width="40" height="40"></a> </div>
-										<div class="wendaslider qa-content">
-											<div class="tit"> <a href="/u/1060505/courses" target="_blank">用户名1</a> </div>
-											<div class="cnt">老师表达清晰，666，感谢</div>
-											<div class="replymegfooter qa-footer clearfix">
-												<div class="l-box l">
-												</div> <span class="r timeago">2020-03-04</span>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="wenda-listcon mod-qa-list post-row clearfix" data-id="611142">
-										<div class="headslider qa-medias l"> <a href="/u/1060505/courses" class="media" target="_blank" title="单单happy"><img
-												 src="//img.mukewang.com/5716ebe900015f9a04330398-40-40.jpg" width="40" height="40"></a> </div>
-										<div class="wendaslider qa-content">
-											<div class="tit"> <a href="/u/1060505/courses" target="_blank">用户2</a> </div>
-											<div class="cnt">老师表达清晰，666，感谢</div>
-											<div class="replymegfooter qa-footer clearfix">
-												<div class="l-box l">
-												</div> <span class="r timeago">2020-03-04</span>
-											</div>
-										</div>
-									</div>
-								</li>
+							<!-- 评论 -->
+							<ul id="commentContainer">
 							</ul>
 							<form class="layui-form layui-form-pane" lay-filter="comment">
 								<div class="layui-form-item layui-form-text">
@@ -330,7 +303,7 @@
 				var data = form.val('comment');
 				alert(JSON.stringify(data));
 			});
-			
+
 			layui.$('#exam-btn').on('click', function() {
 				var data = form.val('exam');
 				alert(JSON.stringify(data));

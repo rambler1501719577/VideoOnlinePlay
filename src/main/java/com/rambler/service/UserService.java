@@ -43,9 +43,9 @@ public class UserService {
             if (user.getPassword().equals(password)) {
                 Role role = roleMapper.selectByPrimaryKey(user.getRoleId());
                 List<Menu> menuList = menuMapper.getMenuListByRoleId(role.getId());
-                Map<String,Object> map = new HashMap<>();
-                map.put("user",user);
-                map.put("menu",menuList);
+                Map<String, Object> map = new HashMap<>();
+                map.put("user", user);
+                map.put("menu", menuList);
                 session.setAttribute(Variable.CURRENT_USER, map);
                 return Response.createSuccessResponse(user);
             } else {
@@ -79,6 +79,10 @@ public class UserService {
             return Response.createSuccessResponse("操作成功");
         }
         return Response.createErrorResponse("操作失败");
+    }
+
+    public User getUserById(String userId) {
+        return userMapper.selectByPrimaryKey(userId);
     }
 
 }

@@ -15,7 +15,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, teacher_id, classify_id, name, description, create_time, play_src, require_level, 
-    study_times,coverImage
+    study_times,cover_image
   </sql>
 
   <select id="getByClassifyId" resultMap="BaseResultMap">

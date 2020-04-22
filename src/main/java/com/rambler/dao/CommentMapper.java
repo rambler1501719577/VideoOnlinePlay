@@ -3,6 +3,8 @@ package com.rambler.dao;
 import com.rambler.beans.Comment;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface CommentMapper {
     int deleteByPrimaryKey(String id);
@@ -16,4 +18,6 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    List<Comment> getCommentByCourseId(String courseId);
 }

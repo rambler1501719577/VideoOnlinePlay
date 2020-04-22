@@ -84,3 +84,7 @@
 .layui-form .layui-form-item{
 	margin-bottom:0;
 }
+
+.qa-content a{
+	font-weight: 700;
+}
