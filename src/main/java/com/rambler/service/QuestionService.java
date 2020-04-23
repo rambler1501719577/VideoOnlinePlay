@@ -17,8 +17,8 @@ public class QuestionService {
         questionMapper.insert(question);
     }
 
-    public int getQuestionByUser(String userId) {
-        List<Question> list = questionMapper.getQuestionByUserId(userId);
+    public int getQuestionByUser(String userId,String courseId) {
+        List<Question> list = questionMapper.getQuestionByUserId(userId,courseId);
         if (list != null) {
             return list.size();
         }

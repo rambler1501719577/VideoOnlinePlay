@@ -17,8 +17,8 @@ public class SurveyService {
         surveyMapper.insert(survey);
     }
 
-    public int getSurveySizeByUser(String userId) {
-        List<Survey> list = surveyMapper.selectByUser(userId);
+    public int getSurveySizeByUser(String userId,String courseId) {
+        List<Survey> list = surveyMapper.selectByUser(userId,courseId);
         return list == null ? 0 : list.size();
     }
 }

@@ -21,7 +21,11 @@ public class PageController {
     private RoleService roleService;
 
     @RequestMapping("detail")
-    public String detailPage() {
+    public String detailPage(HttpServletRequest request) {
+        User user = BasicUtil.getCurrentUser(request);
+        if (user == null) {
+            return "common/forbidden.html";
+        }
         return "index/detail.html";
     }
 
@@ -45,5 +49,15 @@ public class PageController {
             }
         }
         return "common/forbidden.html";
+    }
+
+    @RequestMapping("editInfo")
+    public String editInfo() {
+        return "index/editInfo.html";
+    }
+
+    @RequestMapping("mycourse")
+    public String coursePage() {
+        return "index/mycourse.html";
     }
 }

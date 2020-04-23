@@ -28,7 +28,7 @@ public class SurveyController {
         if (user == null) {
             return Response.createErrorResponse("未登录, 提交失败");
         }
-        if (surveyService.getSurveySizeByUser(user.getId()) > 0) {
+        if (surveyService.getSurveySizeByUser(user.getId(),courseId) > 0) {
             return Response.createErrorResponse("您已经提交过了!!");
         }
         survey.setCourseId(courseId);

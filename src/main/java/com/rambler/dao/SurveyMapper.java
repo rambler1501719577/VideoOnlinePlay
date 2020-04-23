@@ -2,6 +2,7 @@ package com.rambler.dao;
 
 import com.rambler.beans.Survey;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,5 +20,5 @@ public interface SurveyMapper {
 
     int updateByPrimaryKey(Survey record);
 
-    List<Survey> selectByUser(String userId);
+    List<Survey> selectByUser(@Param("userId") String userId, @Param("courseId") String courseId);
 }

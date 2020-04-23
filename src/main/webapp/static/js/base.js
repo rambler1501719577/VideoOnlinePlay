@@ -3,23 +3,25 @@ var Base = function () {
     var form = null;
     var table = null;
     var layer = null;
-    var loadUser = function () {
+    var loadUserAndMenu = function () {
         $.get("/user/current", function (res) {
             if (res.code === 200) {
-                $("#user-name-span").text(res.data.user.name);
-                $("#user-header-img").attr('src', res.data.user.header);
-                if (res.data.menu) {
-                    var container = $("#dynamic-menu");
-                    var menu_data = res.data.menu;
-                    for (var i = 0; i < menu_data.length; i++) {
-                        var dd = $("<dd><a href='" + menu_data[i].url + "'>" + menu_data[i].name + "</a></dd>")
-                        container.append(dd);
-                    }
-                }
+                $("#user-name-span").text(res.data.name);
+                $("#user-header-img").attr('src', res.data.header);
             } else {
                 window.location.href = "http://localhost:8080/";
             }
         });
+        $.get("/menu/list", function (res) {
+            if (res.data) {
+                var container = $("#dynamic-menu");
+                var menu_data = res.data;
+                for (var i = 0; i < menu_data.length; i++) {
+                    var dd = $("<dd><a href='" + menu_data[i].url + "'>" + menu_data[i].name + "</a></dd>")
+                    container.append(dd);
+                }
+            }
+        })
     };
     var bindEventListener = function () {
         $(".quit-btn").click(function () {
@@ -45,7 +47,7 @@ var Base = function () {
             form = layui.form;
             table = layui.table;
             layer = layui.layer;
-            loadUser();
+            loadUserAndMenu();
             bindEventListener();
         });
     };

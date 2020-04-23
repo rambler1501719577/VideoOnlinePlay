@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>课程分类</title>
+    <title>我的课程</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../../static/layui/css/layui.css">
     <script src="../../../static/layui/layui.js"></script>
@@ -11,7 +11,29 @@
     <link rel="stylesheet" href="../../../static/css/common/footer.css">
     <script src="/static/js/jquery3.3.1.js"></script>
     <script src="/static/js/base.js"></script>
-    <script src="/static/js/course.js"></script>
+    <style>
+        .course {
+            background: #c0c4cc;
+            padding: 1rem 1rem 3rem 1rem;
+            margin-bottom: 10px;
+        }
+
+        .course > h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .course > p {
+            margin-top: 10px;
+        }
+
+        .course a {
+            float: right;
+            background: #232325;
+            color: #ccc;
+            padding: 5px 12px;
+        }
+    </style>
 </head>
 <body>
 <div class="rambler-header">
@@ -34,134 +56,14 @@
         </ul>
     </div>
 </div>
-<div class="content">
-    <div class="layui-row banner">
-        <div class="layui-col-md12">
-            <div class="banner-container layui-carousel" id="test1">
-                <div carousel-item>
-                    <div><img src="../../../static/images/test.jpg" height="540px"></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-md3 top">
-            <ul>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-            </ul>
-        </div>
+<div class="content" style="padding:2rem">
+    <div class="part">
+        <ul class="course-container">
+        </ul>
     </div>
-    <div class="topic">
-        <div class="layui-row layui-col-space30">
-            <div class="layui-col-md2">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-						</span>
-            </div>
-            <div class="layui-col-md2">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-						</span>
-            </div>
-            <div class="layui-col-md3">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-							<a href="">知识</a>
-							<a href="">法律</a>
-						</span>
-            </div>
-            <div class="layui-col-md5">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-							<a href="">知识</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-						</span>
-            </div>
-        </div>
-    </div>
-
-    <div style="overflow-x: hidden;padding: 1rem 2rem">
-        <div class="module">
-            <div class="title-1">
-                <h1>工程结算</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part1">
-            </div>
-        </div>
-        <div class="module">
-            <div class="title-1">
-                <h1>抵债资产</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part2">
-            </div>
-        </div>
-        <div class="module">
-            <div class="title-1">
-                <h1>库存现金</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part3">
-            </div>
-        </div>
-        <div class="module">
-            <div class="title-1">
-                <h1>利息支出</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part4">
-            </div>
-        </div>
-    </div>
-
 </div>
 <footer id="block-AR" class="qy-footer" data-asyn-pb="true">
     <div class="footer-content">
-
         <div class="footer-law">
             <ul id="AR_ftList" class="law-list">
                 <li class="law-item"><a href="javascript:void(0);" rel="nofollow" rseat="711219_footer_fawu_6"
@@ -221,15 +123,26 @@
 </footer>
 </body>
 <script>
-    layui.use(['carousel', 'element'], function () {
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1',
-            width: '100%', //设置容器宽度
-            arrow: 'always', //始终显示箭头
-            height: '540px'
-            //,anim: 'updown' //切换动画方式
+    $(document).ready(function () {
+        layui.use(['carousel', 'element'], function () {
+            $.get('/course/userCourse', function (response) {
+            debugger
+                if (response.code === 200) {
+                    var result = response.data;
+                    var container = $(".course-container");
+                    for (var i = 0; i < result.length; i++) {
+                        var li = $("<li></li>");
+                        var div = $("<div class='course'></div>");
+                        div.append($("<h1>" + result[i].name + "</h1>"));
+                        div.append($("<p>" + result[i].description + "</p>"));
+                        div.append($("<a target='_blank' href='/page/detail?id='" + result[i].id + ">继续学习</a>"));
+                        li.append(div);
+                        container.append(li);
+                    }
+                } else {
+                    alert("加载菜单异常");
+                }
+            })
         });
     });
 </script>

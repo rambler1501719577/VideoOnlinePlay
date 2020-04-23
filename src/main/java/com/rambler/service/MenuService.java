@@ -1,23 +1,26 @@
 package com.rambler.service;
 
+import com.rambler.beans.Menu;
+import com.rambler.beans.Role;
 import com.rambler.config.Response;
-import com.rambler.dao.UserRoleMapper;
+import com.rambler.dao.MenuMapper;
+import com.rambler.dao.RoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
-/**
- * @author rambler
- * @since 2020-02-03 16:41
- */
 @Service
 public class MenuService {
 
     @Autowired
-    private UserRoleMapper userRoleMapper;
+    private RoleMapper roleMapper;
 
-    public Response searchMenuByRole(HttpServletRequest request) {
-        return null;
+    @Autowired
+    private MenuMapper menuMapper;
+
+    public List<Menu> getMenuByRole(String roleId) {
+        Role role = roleMapper.selectByPrimaryKey(roleId);
+        return menuMapper.getMenuListByRoleId(role.getId());
     }
 }

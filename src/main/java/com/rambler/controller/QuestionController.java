@@ -27,7 +27,7 @@ public class QuestionController {
         if (user == null) {
             return Response.createErrorResponse("未登录, 操作失败");
         }
-        if (questionService.getQuestionByUser(user.getId()) > 0) {
+        if (questionService.getQuestionByUser(user.getId(),courseId) > 0) {
             return Response.createErrorResponse("您已经测试过了");
         }
         question.setUserId(user.getId());

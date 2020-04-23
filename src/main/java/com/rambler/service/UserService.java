@@ -41,12 +41,7 @@ public class UserService {
         HttpSession session = request.getSession();
         if (null != user) {
             if (user.getPassword().equals(password)) {
-                Role role = roleMapper.selectByPrimaryKey(user.getRoleId());
-                List<Menu> menuList = menuMapper.getMenuListByRoleId(role.getId());
-                Map<String, Object> map = new HashMap<>();
-                map.put("user", user);
-                map.put("menu", menuList);
-                session.setAttribute(Variable.CURRENT_USER, map);
+                session.setAttribute(Variable.CURRENT_USER, user);
                 return Response.createSuccessResponse(user);
             } else {
                 return Response.createErrorResponse("密码错误");
@@ -59,9 +54,10 @@ public class UserService {
         int result = userMapper.updateByPrimaryKeySelective(user);
         User sessionUser = userMapper.selectByPrimaryKey(user.getId());
         HttpSession session = request.getSession();
+        session.removeAttribute(Variable.CURRENT_USER);
         session.setAttribute(Variable.CURRENT_USER, sessionUser);
         if (result >= 1) {
-            return Response.createSuccessResponse("更新成功");
+            return Response.createSuccessResponse(sessionUser);
         } else {
             return Response.createErrorResponse("更新失败");
         }

@@ -2,6 +2,7 @@ package com.rambler.dao;
 
 import com.rambler.beans.Question;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,5 +20,5 @@ public interface QuestionMapper {
 
     int updateByPrimaryKey(Question record);
 
-    List<Question> getQuestionByUserId(String userId);
+    List<Question> getQuestionByUserId(@Param("userId") String userId,@Param("courseId") String courseId);
 }

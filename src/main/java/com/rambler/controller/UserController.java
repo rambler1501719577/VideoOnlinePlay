@@ -34,9 +34,9 @@ public class UserController {
     @ResponseBody
     public Response currentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Map<String, Object> userMap = (Map<String, Object>) session.getAttribute(Variable.CURRENT_USER);
-        if (userMap != null) {
-            return Response.createSuccessResponse(userMap);
+        User user = (User) session.getAttribute(Variable.CURRENT_USER);
+        if (user != null) {
+            return Response.createSuccessResponse(user);
         } else {
             return Response.createErrorResponse("未登录");
         }

@@ -20,4 +20,6 @@ public interface CourseMapper {
     int updateByPrimaryKey(Course record);
 
     List<Course> getByClassifyId(String classifyId);
+
+    List<Course> getCourseByUser(String userId);
 }

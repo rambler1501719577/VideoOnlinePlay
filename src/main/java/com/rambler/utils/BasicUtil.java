@@ -14,7 +14,6 @@ import java.util.Map;
 public class BasicUtil {
     public static User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Map<String, Object> map = (Map<String, Object>) session.getAttribute(Variable.CURRENT_USER);
-        return (User) map.get("user");
+        return (User) session.getAttribute(Variable.CURRENT_USER);
     }
 }

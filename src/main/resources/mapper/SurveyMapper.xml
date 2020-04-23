@@ -20,7 +20,7 @@
   </sql>
 
   <select id="selectByUser" resultMap="BaseResultMap">
-    select * from survey where user_id = #{userId}
+    select * from survey where user_id = #{userId} and course_id = #{courseId}
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 

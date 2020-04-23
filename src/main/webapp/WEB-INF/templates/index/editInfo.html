@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>课程分类</title>
+    <title>修改资料</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../../static/layui/css/layui.css">
     <script src="../../../static/layui/layui.js"></script>
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../../static/css/common/footer.css">
     <script src="/static/js/jquery3.3.1.js"></script>
     <script src="/static/js/base.js"></script>
-    <script src="/static/js/course.js"></script>
 </head>
 <body>
 <div class="rambler-header">
@@ -34,134 +33,86 @@
         </ul>
     </div>
 </div>
-<div class="content">
-    <div class="layui-row banner">
-        <div class="layui-col-md12">
-            <div class="banner-container layui-carousel" id="test1">
-                <div carousel-item>
-                    <div><img src="../../../static/images/test.jpg" height="540px"></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+<div class="content" style="padding:2rem;margin:auto;width:80%">
+    <form class="layui-form" action="" lay-filter="user">
+        <div class="layui-form-item">
+            <input type="hidden" name="id" required lay-verify="required" placeholder="" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">帐号</label>
+            <div class="layui-input-block">
+                <input type="text" name="account" required lay-verify="required" placeholder="" autocomplete="off"
+                       class="layui-input">
             </div>
         </div>
-        <div class="layui-col-md3 top">
-            <ul>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-                <li><a href="">
-                    <h2>我们永不言弃我们永不言弃</h2>
-                </a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="topic">
-        <div class="layui-row layui-col-space30">
-            <div class="layui-col-md2">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-						</span>
-            </div>
-            <div class="layui-col-md2">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-						</span>
-            </div>
-            <div class="layui-col-md3">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-							<a href="">知识</a>
-							<a href="">法律</a>
-						</span>
-            </div>
-            <div class="layui-col-md5">
-						<span class="layui-breadcrumb" lay-separator="|">
-							<a href="">娱乐</a>
-							<a href="">八卦</a>
-							<a href="">体育</a>
-							<a href="">搞笑</a>
-							<a href="">知识</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-							<a href="">法律</a>
-						</span>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" required lay-verify="required" placeholder="请输入密码"
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
-    </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-block">
+                <input type="text" name="age" required lay-verify="required" placeholder="" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="telephone" required lay-verify="required" placeholder="" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" name="mail" required lay-verify="required" placeholder="" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" type="button" id="save">保存</button>
+            </div>
+        </div>
+    </form>
 
-    <div style="overflow-x: hidden;padding: 1rem 2rem">
-        <div class="module">
-            <div class="title-1">
-                <h1>工程结算</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part1">
-            </div>
-        </div>
-        <div class="module">
-            <div class="title-1">
-                <h1>抵债资产</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part2">
-            </div>
-        </div>
-        <div class="module">
-            <div class="title-1">
-                <h1>库存现金</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part3">
-            </div>
-        </div>
-        <div class="module">
-            <div class="title-1">
-                <h1>利息支出</h1>
-            </div>
-            <div class="layui-row layui-col-space16" id="part4">
-            </div>
-        </div>
-    </div>
-
+    <script>
+        $(document).ready(function () {
+            layui.use(['form', 'element', 'layer'], function () {
+                var form = layui.form;
+                $.get("/user/current", function (response) {
+                    form.val('user', response.data);
+                });
+                //监听提交
+                $("#save").click(function () {
+                    var data = form.val('user');
+                    $.post("/user/update", data, function (response) {
+                        if (response.code === 200) {
+                            layer.msg("修改成功");
+                            form.val('user', response.data);
+                        } else {
+                            layer.msg("修改失败");
+                        }
+                    })
+                })
+            });
+        });
+    </script>
 </div>
 <footer id="block-AR" class="qy-footer" data-asyn-pb="true">
     <div class="footer-content">
-
         <div class="footer-law">
             <ul id="AR_ftList" class="law-list">
                 <li class="law-item"><a href="javascript:void(0);" rel="nofollow" rseat="711219_footer_fawu_6"
@@ -220,17 +171,4 @@
 					Reserved</span></div>
 </footer>
 </body>
-<script>
-    layui.use(['carousel', 'element'], function () {
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1',
-            width: '100%', //设置容器宽度
-            arrow: 'always', //始终显示箭头
-            height: '540px'
-            //,anim: 'updown' //切换动画方式
-        });
-    });
-</script>
 </html>

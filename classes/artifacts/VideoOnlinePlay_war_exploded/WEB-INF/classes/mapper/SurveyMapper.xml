@@ -18,6 +18,10 @@
     id, course_id, user_id, question1, question2, question3, question4, question5, question6, 
     question7, question8
   </sql>
+
+  <select id="selectByUser" resultMap="BaseResultMap">
+    select * from survey where user_id = #{userId} and course_id = #{courseId}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
