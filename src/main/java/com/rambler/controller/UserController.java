@@ -34,7 +34,7 @@ public class UserController {
     @ResponseBody
     public Response currentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-         Map<String,Object> userMap = (Map<String,Object>)session.getAttribute(Variable.CURRENT_USER);
+        Map<String, Object> userMap = (Map<String, Object>) session.getAttribute(Variable.CURRENT_USER);
         if (userMap != null) {
             return Response.createSuccessResponse(userMap);
         } else {
@@ -42,15 +42,13 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "quit", method = RequestMethod.POST)
-    @ResponseBody
-    public Response quitCurrentUser(HttpServletRequest request) {
+    @RequestMapping(value = "quit")
+    public String quitCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if (session.getAttribute(Variable.CURRENT_USER) != null) {
             session.removeAttribute(Variable.CURRENT_USER);
-            return Response.createSuccessResponse("注销成功");
         }
-        return Response.createErrorResponse("注销失败, 您还未登录");
+        return "common/login.html";
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST)

@@ -22,6 +22,11 @@
     id, user_id, course_id, question1, question2, question3, question4, question5, question6, 
     question7, question8, question9, question10, score, status
   </sql>
+
+  <select id="getQuestionByUserId" resultMap="BaseResultMap">
+    select * from question where user_id = #{userId}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

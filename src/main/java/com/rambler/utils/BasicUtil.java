@@ -5,6 +5,7 @@ import com.rambler.config.Variable;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * @author rambler
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 public class BasicUtil {
     public static User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        return (User) session.getAttribute(Variable.CURRENT_USER);
+        Map<String, Object> map = (Map<String, Object>) session.getAttribute(Variable.CURRENT_USER);
+        return (User) map.get("user");
     }
 }

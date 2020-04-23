@@ -3,6 +3,8 @@ package com.rambler.dao;
 import com.rambler.beans.Question;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface QuestionMapper {
     int deleteByPrimaryKey(String id);
@@ -16,4 +18,6 @@ public interface QuestionMapper {
     int updateByPrimaryKeySelective(Question record);
 
     int updateByPrimaryKey(Question record);
+
+    List<Question> getQuestionByUserId(String userId);
 }
