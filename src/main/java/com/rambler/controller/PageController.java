@@ -75,4 +75,14 @@ public class PageController {
     public String correctDetailPage(){
         return "index/questiondetail.html";
     }
+
+    @RequestMapping("evaluate")
+    public String evaluatePage(){
+        return "index/evaluate.html";
+    }
+
+    @RequestMapping("survey/detail")
+    public String surveyDetail(){
+        return "index/surveyDetail.html";
+    }
 }

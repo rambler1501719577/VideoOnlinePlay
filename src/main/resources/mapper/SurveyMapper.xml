@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rambler.dao.SurveyMapper" >
-  <resultMap id="BaseResultMap" type="com.rambler.beans.Survey" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="course_id" property="courseId" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="question1" property="question1" jdbcType="VARCHAR" />
-    <result column="question2" property="question2" jdbcType="VARCHAR" />
-    <result column="question3" property="question3" jdbcType="VARCHAR" />
-    <result column="question4" property="question4" jdbcType="VARCHAR" />
-    <result column="question5" property="question5" jdbcType="VARCHAR" />
-    <result column="question6" property="question6" jdbcType="VARCHAR" />
-    <result column="question7" property="question7" jdbcType="VARCHAR" />
-    <result column="question8" property="question8" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.rambler.dao.SurveyMapper">
+    <resultMap id="BaseResultMap" type="com.rambler.beans.Survey">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="course_id" property="courseId" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="question1" property="question1" jdbcType="VARCHAR"/>
+        <result column="question2" property="question2" jdbcType="VARCHAR"/>
+        <result column="question3" property="question3" jdbcType="VARCHAR"/>
+        <result column="question4" property="question4" jdbcType="VARCHAR"/>
+        <result column="question5" property="question5" jdbcType="VARCHAR"/>
+        <result column="question6" property="question6" jdbcType="VARCHAR"/>
+        <result column="question7" property="question7" jdbcType="VARCHAR"/>
+        <result column="question8" property="question8" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, course_id, user_id, question1, question2, question3, question4, question5, question6, 
-    question7, question8
+    question7, question8,time
   </sql>
 
-  <select id="selectByUser" resultMap="BaseResultMap">
+    <select id="getSurveyByCourseId" resultMap="BaseResultMap">
+    select * from survey where course_id = #{courseId}
+  </select>
+
+    <select id="selectByUser" resultMap="BaseResultMap">
     select * from survey where user_id = #{userId} and course_id = #{courseId}
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from survey
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from survey
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from survey
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.rambler.beans.Survey" >
+    <insert id="insert" parameterType="com.rambler.beans.Survey">
     insert into survey (id, course_id, user_id, 
       question1, question2, question3, 
       question4, question5, question6, 
@@ -42,116 +47,116 @@
       #{question4,jdbcType=VARCHAR}, #{question5,jdbcType=VARCHAR}, #{question6,jdbcType=VARCHAR}, 
       #{question7,jdbcType=VARCHAR}, #{question8,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.rambler.beans.Survey" >
-    insert into survey
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="courseId != null" >
-        course_id,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="question1 != null" >
-        question1,
-      </if>
-      <if test="question2 != null" >
-        question2,
-      </if>
-      <if test="question3 != null" >
-        question3,
-      </if>
-      <if test="question4 != null" >
-        question4,
-      </if>
-      <if test="question5 != null" >
-        question5,
-      </if>
-      <if test="question6 != null" >
-        question6,
-      </if>
-      <if test="question7 != null" >
-        question7,
-      </if>
-      <if test="question8 != null" >
-        question8,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="courseId != null" >
-        #{courseId,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="question1 != null" >
-        #{question1,jdbcType=VARCHAR},
-      </if>
-      <if test="question2 != null" >
-        #{question2,jdbcType=VARCHAR},
-      </if>
-      <if test="question3 != null" >
-        #{question3,jdbcType=VARCHAR},
-      </if>
-      <if test="question4 != null" >
-        #{question4,jdbcType=VARCHAR},
-      </if>
-      <if test="question5 != null" >
-        #{question5,jdbcType=VARCHAR},
-      </if>
-      <if test="question6 != null" >
-        #{question6,jdbcType=VARCHAR},
-      </if>
-      <if test="question7 != null" >
-        #{question7,jdbcType=VARCHAR},
-      </if>
-      <if test="question8 != null" >
-        #{question8,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rambler.beans.Survey" >
-    update survey
-    <set >
-      <if test="courseId != null" >
-        course_id = #{courseId,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="question1 != null" >
-        question1 = #{question1,jdbcType=VARCHAR},
-      </if>
-      <if test="question2 != null" >
-        question2 = #{question2,jdbcType=VARCHAR},
-      </if>
-      <if test="question3 != null" >
-        question3 = #{question3,jdbcType=VARCHAR},
-      </if>
-      <if test="question4 != null" >
-        question4 = #{question4,jdbcType=VARCHAR},
-      </if>
-      <if test="question5 != null" >
-        question5 = #{question5,jdbcType=VARCHAR},
-      </if>
-      <if test="question6 != null" >
-        question6 = #{question6,jdbcType=VARCHAR},
-      </if>
-      <if test="question7 != null" >
-        question7 = #{question7,jdbcType=VARCHAR},
-      </if>
-      <if test="question8 != null" >
-        question8 = #{question8,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.rambler.beans.Survey" >
+    <insert id="insertSelective" parameterType="com.rambler.beans.Survey">
+        insert into survey
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="courseId != null">
+                course_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="question1 != null">
+                question1,
+            </if>
+            <if test="question2 != null">
+                question2,
+            </if>
+            <if test="question3 != null">
+                question3,
+            </if>
+            <if test="question4 != null">
+                question4,
+            </if>
+            <if test="question5 != null">
+                question5,
+            </if>
+            <if test="question6 != null">
+                question6,
+            </if>
+            <if test="question7 != null">
+                question7,
+            </if>
+            <if test="question8 != null">
+                question8,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="courseId != null">
+                #{courseId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="question1 != null">
+                #{question1,jdbcType=VARCHAR},
+            </if>
+            <if test="question2 != null">
+                #{question2,jdbcType=VARCHAR},
+            </if>
+            <if test="question3 != null">
+                #{question3,jdbcType=VARCHAR},
+            </if>
+            <if test="question4 != null">
+                #{question4,jdbcType=VARCHAR},
+            </if>
+            <if test="question5 != null">
+                #{question5,jdbcType=VARCHAR},
+            </if>
+            <if test="question6 != null">
+                #{question6,jdbcType=VARCHAR},
+            </if>
+            <if test="question7 != null">
+                #{question7,jdbcType=VARCHAR},
+            </if>
+            <if test="question8 != null">
+                #{question8,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.rambler.beans.Survey">
+        update survey
+        <set>
+            <if test="courseId != null">
+                course_id = #{courseId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="question1 != null">
+                question1 = #{question1,jdbcType=VARCHAR},
+            </if>
+            <if test="question2 != null">
+                question2 = #{question2,jdbcType=VARCHAR},
+            </if>
+            <if test="question3 != null">
+                question3 = #{question3,jdbcType=VARCHAR},
+            </if>
+            <if test="question4 != null">
+                question4 = #{question4,jdbcType=VARCHAR},
+            </if>
+            <if test="question5 != null">
+                question5 = #{question5,jdbcType=VARCHAR},
+            </if>
+            <if test="question6 != null">
+                question6 = #{question6,jdbcType=VARCHAR},
+            </if>
+            <if test="question7 != null">
+                question7 = #{question7,jdbcType=VARCHAR},
+            </if>
+            <if test="question8 != null">
+                question8 = #{question8,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.rambler.beans.Survey">
     update survey
     set course_id = #{courseId,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=VARCHAR},

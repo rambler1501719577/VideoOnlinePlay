@@ -1,5 +1,7 @@
 package com.rambler.beans;
 
+import java.util.Date;
+
 public class Survey {
     private String id;
 
@@ -22,6 +24,8 @@ public class Survey {
     private String question7;
 
     private String question8;
+
+    private Date time;
 
     public String getId() {
         return id;
@@ -109,5 +113,13 @@ public class Survey {
 
     public void setQuestion8(String question8) {
         this.question8 = question8 == null ? null : question8.trim();
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 }
