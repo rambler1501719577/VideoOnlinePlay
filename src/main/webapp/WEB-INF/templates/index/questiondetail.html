@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>批改</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../../static/layui/css/layui.css">
+    <script src="../../../static/layui/layui.js"></script>
+    <link rel="stylesheet" href="../../../static/css/common/header.css">
+    <link rel="stylesheet" href="../../../static/css/index.css">
+    <link rel="stylesheet" href="../../../static/css/common/footer.css">
+    <script src="/static/js/jquery3.3.1.js"></script>
+    <script src="/static/js/base.js"></script>
+</head>
+<body>
+<div class="rambler-header">
+    <div class="rambler-title">
+        <h1>会计培训</h1>
+    </div>
+    <div class="user">
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item"><a href="/page/about" target="_blank">关于</a></li>
+            <li class="layui-nav-item"><a href="/page/help" target="_blank">帮助</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="/static/upload/images/default.png" alt class="layui-nav-img" id="user-header-img">
+                    <span id="user-name-span">登录</span>
+                </a>
+                <!-- 用户角色的 -->
+                <dl class="layui-nav-child" id="dynamic-menu">
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="content" style="padding:2rem">
+    <form class="layui-form layui-form-pane" lay-filter="exam">
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="hidden" name="id" class="layui-input id"/>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">1.
+                某公司通过发行可转换债券筹集资金，每张面值为1000元，转换比率为20，则该可转换债券的转换价格为（　　）元</label>
+            <div class="question-body">
+                <input type="radio" name="question1" value="A" title="A : 20"><br>
+                <input type="radio" name="question1" value="B" title="B : 50"><br>
+                <input type="radio" name="question1" value="C" title="C : 30"><br>
+                <input type="radio" name="question1" value="D" title="D : 25"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">2. 下列有关可转换债券筹资的特点表述不正确的是()</label>
+            <div class="question-body">
+                <input type="radio" name="question2" value="A" title="A : 可节约利息支出"><br>
+                <input type="radio" name="question2" value="B" title="B : 筹资效率高"><br>
+                <input type="radio" name="question2" value="C" title="C : 存在不转换的财务压力"><br>
+                <input type="radio" name="question2" value="D" title="D : 资本成本较高"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">3.
+                可转换债券持有者未来可以在事先约定的期限内选择将债券转换为普通股票，也可以放弃转换权利，持有至债券到期还本付息，这体现的可转换债券基本性质是（　　）</label>
+            <div class="question-body">
+                <input type="radio" name="question3" value="A" title="A : 证券期权性"><br>
+                <input type="radio" name="question3" value="B" title="B : 资本转换性"><br>
+                <input type="radio" name="question3" value="C" title="C : 赎回与回售"><br>
+                <input type="radio" name="question3" value="D" title="D : 资本保全性"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">4.下列属于可转换债券的回售条款情形的是（　　）。　　</label>
+            <div class="question-body">
+                <input type="radio" name="question4" value="A" title="A : 公司股票价格在一段时期内连续高于转股价格达到某一幅度"><br>
+                <input type="radio" name="question4" value="B" title="B : 公司股票价格在一段时期内连续低于转股价格达到某一幅度"><br>
+                <input type="radio" name="question4" value="C" title="C : 可转换债券的票面利率大于市场利率"><br>
+                <input type="radio" name="question4" value="D" title="D : 可转换债券的票面利率小于市场利率"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">5.下列关于认股权证的特点表述错误的是（　　）。　　</label>
+            <div class="question-body">
+                <input type="radio" name="question5" value="A" title="A : 是一种融资促进工具　"><br>
+                <input type="radio" name="question5" value="B" title="B : 有助于改善上市公司的治理结构"><br>
+                <input type="radio" name="question5" value="C" title="C : 有利于推进上市公司的股权激励机制"><br>
+                <input type="radio" name="question5" value="D" title="D : 是一种拥有股权的证券"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">6.认股权证的发行人是（　　）。　　</label>
+            <div class="question-body">
+                <input type="radio" name="question6" value="A" title="A : 债券持有人"><br>
+                <input type="radio" name="question6" value="B" title="B : 标的股票持有人"><br>
+                <input type="radio" name="question6" value="C" title="C : 发行标的股票的上市公司"><br>
+                <input type="radio" name="question6" value="D" title="D : 发行标的股票的非上市公司"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">7.某公司2014年资金平均占用额为500万元，经分析，其中不合理部分为20万元，预计2015年销售增长8%，但资金周转下降3%。则预测2015年资金需要量为（　　）万元。　　</label>
+            <div class="question-body">
+                <input type="radio" name="question7" value="A" title="A : 533.95"><br>
+                <input type="radio" name="question7" value="B" title="B : 556.62"><br>
+                <input type="radio" name="question7" value="C" title="C : 502.85"><br>
+                <input type="radio" name="question7" value="D" title="D : 523.8"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">8.采用销售百分比法预测对外筹资需要量时，下列各项变动中，会使对外筹资需要量减少的是（　　）。　　</label>
+            <div class="question-body">
+                <input type="radio" name="question8" value="A" title="A : 股利支付率提高"><br>
+                <input type="radio" name="question8" value="B" title="B : 固定资产增加"><br>
+                <input type="radio" name="question8" value="C" title="C : 应付账款增加"><br>
+                <input type="radio" name="question8" value="D" title="D : 销售净利率降低"><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">9.A公司2013年的经营性资产为680万元，经营性负债为260万元，销售收入为1200万元，经营性资产、经营性负债占销售收入的百分比不变，预计2014年销售增长率为10%，销售净利率为10%，股利支付率为75%，则2014年需要从外部市场筹集的资金为（　　）万元。　　</label>
+            <div class="question-body">
+                <input type="radio" name="question9" value="A" title="A : 6"><br>
+                <input type="radio" name="question9" value="B" title="B : 7"><br>
+                <input type="radio" name="question9" value="C" title="C : 8"><br>
+                <input type="radio" name="question9" value="D" title="D : 9"/><br>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">10.在财务管理中，将资金划分为变动资金、不变资金和半变动资金，并据以预测企业未来资金需要量的方法称为（　　）。　　</label>
+            <div class="question-body" style="border-bottom: 1px solid #e6e6e6;margin-bottom:10px;">
+                <input type="radio" name="question10" value="A" title="A : 定额预测法"><br>
+                <input type="radio" name="question10" value="B" title="B : 比率预测法"><br>
+                <input type="radio" name="question10" value="C" title="C : 资金习性预测法"><br>
+                <input type="radio" name="question10" value="D" title="D : 成本习性预测法"><br>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div style="float:right">
+                <p style="display:inline-block;float:left;line-height: 38px;margin-right:5px">最终成绩</p>
+                <input type="text" required placeholder="" autocomplete="off" class="layui-input score"
+                       style="width:100px;display:inline-block;float:left;margin-right:10px"/>
+                <button class="layui-btn" type="button" id="correct-btn">批改</button>
+            </div>
+        </div>
+    </form>
+</div>
+<footer id="block-AR" class="qy-footer" data-asyn-pb="true">
+    <div class="footer-content">
+        <div class="footer-law">
+            <ul id="AR_ftList" class="law-list">
+                <li class="law-item"><a href="javascript:void(0);" rel="nofollow" rseat="711219_footer_fawu_6"
+                                        title="广播电视节目制作经营许可证 (京)字第1938号"
+                                        class="law-link ">
+                    广播电视节目制作经营许可证 (京)字第1938号
+                </a></li>
+                <li class="law-item"><a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow"
+                                        rseat="711219_footer_fawu_7"
+                                        title="京ICP备11032965号" class="law-link ">
+                    京ICP备11032965号
+                </a></li>
+                <li class="law-item"><a href="https://www.hd315.gov.cn/beian/view.asp?bianhao=010202012091700001"
+                                        target="_blank"
+                                        rel="nofollow" rseat="711219_footer_fawu_8" title="经营性网站备案信息" class="law-link ">
+                    经营性网站备案信息
+                </a></li>
+                <li class="law-item"><a
+                        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020024"
+                        target="_blank"
+                        rel="nofollow" rseat="711219_footer_fawu_9" title="京公网安备 11010802020024号" class="law-link ">
+                    京公网安备 11010802020024号
+                </a></li>
+                <li class="law-item"><a href="javascript:void(0);" rel="nofollow" rseat="711219_footer_fawu_10"
+                                        title="增值电信业务经营许可证 B2-20120273"
+                                        class="law-link ">
+                    增值电信业务经营许可证 B2-20120273
+                </a></li>
+                <li class="law-item"><a href="javascript:void(0);" rel="nofollow" rseat="711219_footer_fawu_11"
+                                        title="互联网药品信息服务资格证书"
+                                        class="law-link ">
+                    互联网药品信息服务资格证书
+                </a></li>
+                <li class="law-item"><a href="javascript:void(0);" rel="nofollow" rseat="711219_footer_fawu_12"
+                                        title="食品经营许可证 JY11108111598788"
+                                        class="law-link ">
+                    食品经营许可证 JY11108111598788
+                </a></li>
+            </ul>
+        </div>
+        <div id="AR_jubaomenu" class="footer-jubao"><a href="http://www.12377.cn" target="_blank" rseat="711219_footer"
+                                                       rel="nofollow"
+                                                       class="jubao-lk">中国互联网举报中心</a> <i class="cutline"></i> <a
+                href="//www.12377.cn/node_548446.htm" rseat="711219_footer"
+                target="_blank" rel="nofollow" class="jubao-lk">网络举报APP下载</a> <i class="cutline"></i> <a
+                href="//www.iqiyi.com/common/announce.html"
+                target="_blank" rseat="711219_footer" class="jubao-lk">反盗版和反盗链权利声明</a> <i class="cutline"></i> <span
+                class="jubao-lk unlink">违法和不良信息举报电话：400-923-7171</span>
+            <i class="cutline"></i> <span class="jubao-lk">举报邮箱：<a href="mailto:jubao365@qiyi.com" rel="nofollow"
+                                                                   class="link-txt">jubao365@qiyi.com</a></span>
+            <span></span></div>
+    </div>
+    <div id="AR_copyright" class="copyright">
+        Copyright © 2020
+        <a target="_blank" rseat="711219_footer" href="//www.iqiyi.com/" class="copyright-lk">爱奇艺</a> <span>All Rights
+					Reserved</span></div>
+</footer>
+</body>
+<script>
+    $(document).ready(function () {
+        layui.use(['element', 'form', 'layer'], function () {
+            var form = layui.form;
+            var layer = layui.layer;
+            var getIdByParam = function () {
+                var url = location.href;
+                var allParam = url.split("?")[1];
+                return allParam.split("=")[1];
+            };
+            $.post("/question/get", {id: getIdByParam()}, function (response) {
+                form.val('exam', response.data);
+            });
+            $("#correct-btn").click(function () {
+                $.post("/question/givemark", {score: $(".score").val(), id: $(".id").val()}, function (response) {
+                    if (response.code === 200) {
+                        alert("批改成功");
+                        window.location.href = '/page/correct';
+                    } else {
+                        layer.msg("批改失败");
+                    }
+                })
+            })
+        });
+    });
+</script>
+</html>
+
+
+
+

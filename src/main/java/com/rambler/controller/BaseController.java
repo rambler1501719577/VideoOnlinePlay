@@ -24,7 +24,7 @@ public class BaseController {
         return "common/login.html";
     }
 
-    public User getSessionUser(HttpServletRequest request){
+    User getSessionUser(HttpServletRequest request){
         return BasicUtil.getCurrentUser(request);
     }
 

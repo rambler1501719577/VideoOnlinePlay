@@ -22,4 +22,6 @@ public interface CourseMapper {
     List<Course> getByClassifyId(String classifyId);
 
     List<Course> getCourseByUser(String userId);
+
+    List<Course> getTeacherCourse(String teacherId);
 }

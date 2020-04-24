@@ -60,4 +60,19 @@ public class PageController {
     public String coursePage() {
         return "index/mycourse.html";
     }
+
+    @RequestMapping("myquestion")
+    public String question(){
+        return "index/myquestion.html";
+    }
+
+    @RequestMapping("correct")
+    public String correctPage(){
+        return "index/correct.html";
+    }
+
+    @RequestMapping("correct/detail")
+    public String correctDetailPage(){
+        return "index/questiondetail.html";
+    }
 }

@@ -65,4 +65,8 @@ public class TableResponse<T> {
     public static <T> TableResponse<T> createSuccessResponse(String successMessage, T data, int total) {
         return new TableResponse<>(0, successMessage, total, data);
     }
+
+    public static <T> TableResponse<T> createErrorResponse(String message) {
+        return new TableResponse<>(1, message, 0, null);
+    }
 }

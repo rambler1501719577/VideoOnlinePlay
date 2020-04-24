@@ -23,6 +23,14 @@
     question7, question8, question9, question10, score, status
   </sql>
 
+  <select id="getQuestionByCourseId" resultMap="BaseResultMap">
+    select * from question where course_id = #{courseId} and status = 0
+  </select>
+
+  <select id="getQuestionListByUser" resultMap="BaseResultMap">
+    select * from question where user_id = #{userId} and status = 1
+  </select>
+
   <select id="getQuestionByUserId" resultMap="BaseResultMap">
     select * from question where user_id = #{userId} and course_id = #{courseId}
   </select>

@@ -21,4 +21,8 @@ public interface QuestionMapper {
     int updateByPrimaryKey(Question record);
 
     List<Question> getQuestionByUserId(@Param("userId") String userId,@Param("courseId") String courseId);
+
+    List<Question> getQuestionListByUser(String userId);
+
+    List<Question> getQuestionByCourseId(String courseId);
 }

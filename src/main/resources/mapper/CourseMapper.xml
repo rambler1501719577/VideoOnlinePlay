@@ -22,6 +22,10 @@
     select * from course where classify_id = #{classifyId}
   </select>
 
+  <select id="getTeacherCourse" resultMap="BaseResultMap">
+    select * from course where teacher_id = #{teacherId}
+  </select>
+
   <select id="getCourseByUser" resultMap="BaseResultMap">
     SELECT
       course.id,
