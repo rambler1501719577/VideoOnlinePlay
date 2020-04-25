@@ -2,6 +2,7 @@ package com.rambler.dao;
 
 import com.rambler.beans.Classify;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,7 +20,9 @@ public interface ClassifyMapper {
 
     int updateByPrimaryKey(Classify record);
 
-    List<Classify> selectList();
+    List<Classify> selectAll();
+
+    List<Classify> selectList(@Param("start") Integer page, @Param("limit") Integer limit);
 
     Classify getByName(String name);
 }

@@ -9,8 +9,11 @@
     id, name
   </sql>
 
-  <select id="selectList" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="BaseResultMap">
     select * from classify
+  </select>
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from classify limit #{start},#{limit}
   </select>
 
   <select id="getByName" resultMap="BaseResultMap">

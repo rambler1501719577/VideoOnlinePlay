@@ -26,6 +26,14 @@
     select * from course where teacher_id = #{teacherId}
   </select>
 
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from course
+  </select>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from course limit #{start},#{limit}
+  </select>
+
   <select id="getCourseByUser" resultMap="BaseResultMap">
     SELECT
       course.id,

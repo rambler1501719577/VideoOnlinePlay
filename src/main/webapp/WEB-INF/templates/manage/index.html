@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>后台管理系统</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/static/css/base.css" media="all">
-    <link rel="stylesheet" href="/static/css/steps.css">
     <!-- 培养申请样式表 -->
-    <link rel="stylesheet" href="/static/css/apply.css">
     <script src="/static/js/jquery3.3.1.js"></script>
     <script src="/static/layui/layui.js"></script>
     <script src="/static/js/base.js"></script>
@@ -17,18 +14,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo" style="background:#233d4a;color:#fff">青年教师助教培养系统</div>
+        <div class="layui-logo" style="background:#233d4a;color:#fff">会计培训系统</div>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="/static/images/header.png" class="layui-nav-img">
-                    <span class="current-user"></span>
+                    <span class="current-user">管理员</span>
                 </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                </dl>
             </li>
-            <li class="layui-nav-item"><a style="cursor:pointer" class="quit-btn">注销</a></li>
+            <li class="layui-nav-item"><a style="cursor:pointer" class="quit-btn">退出</a></li>
         </ul>
     </div>
 
@@ -39,32 +33,37 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a href="javascript:;">功能管理模块</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">视频管理</a></dd>
-                        <dd><a href="">教师管理</a></dd>
-                        <dd><a href="">课程管理</a></dd>
-                        <dd><a href="">分类管理</a></dd>
+                        <dd><a href="javascript:;" data-aim="/page/manage/video" class="aim">视频管理</a></dd>
+                        <dd><a href="javascript:;" data-aim="/page/manage/teacher" class="aim">教师管理</a></dd>
+                        <dd><a href="javascript:;" data-aim="/page/manage/course" class="aim">课程管理</a></dd>
+                        <dd><a href="javascript:;" data-aim="/page/manage/classify" class="aim">分类管理</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">信息维护</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">税务动态</a></dd>
-                        <dd><a href="">课程问卷信息维护</a></dd>
+                        <dd><a href="javascript:;" data-aim="/page/manage/tax" class="aim">税务动态</a></dd>
+                        <dd><a href="javascript:;" data-aim="/page/manage/survey" class="aim">课程问卷信息维护</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">数据统计分析</a></li>
-                <li class="layui-nav-item"><a href="">数据导出</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" data-aim="/page/manage/analyze" class="aim">数据统计分析</a>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" data-aim="/page/manage/export" class="aim">数据导出</a>
+                </li>
             </ul>
+            <script>
+                $(".aim").each(function () {
+                    $(this).click(function () {
+                        $("#content").attr("src", $(this).attr('data-aim'));
+                    })
+                });
+            </script>
         </div>
     </div>
 
     <div class="layui-body">
-
-    </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © baidu.com - 百度一下 你就知道
+        <iframe src="/page/manage/classify" frameborder="0" id="content"
+                style="width: 100%;height:calc(100vh - 65px);overflow-y: auto"></iframe>
     </div>
 </div>
 

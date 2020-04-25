@@ -62,27 +62,67 @@ public class PageController {
     }
 
     @RequestMapping("myquestion")
-    public String question(){
+    public String question() {
         return "index/myquestion.html";
     }
 
     @RequestMapping("correct")
-    public String correctPage(){
+    public String correctPage() {
         return "index/correct.html";
     }
 
     @RequestMapping("correct/detail")
-    public String correctDetailPage(){
+    public String correctDetailPage() {
         return "index/questiondetail.html";
     }
 
     @RequestMapping("evaluate")
-    public String evaluatePage(){
+    public String evaluatePage() {
         return "index/evaluate.html";
     }
 
     @RequestMapping("survey/detail")
-    public String surveyDetail(){
+    public String surveyDetail() {
         return "index/surveyDetail.html";
+    }
+
+    @RequestMapping("manage/video")
+    public String videoPage() {
+        return "manage/video.html";
+    }
+
+    @RequestMapping("manage/teacher")
+    public String teacherPage() {
+        return "manage/teacher.html";
+    }
+
+    @RequestMapping("manage/course")
+    public String CoursePage() {
+        return "manage/course.html";
+    }
+
+    @RequestMapping("manage/classify")
+    public String classifyPage() {
+        return "manage/classify.html";
+    }
+
+    @RequestMapping("manage/tax")
+    public String taxPage() {
+        return "manage/tax.html";
+    }
+
+    @RequestMapping("manage/survey")
+    public String surveyPage() {
+        return "manage/survey.html";
+    }
+
+    @RequestMapping("manage/analyze")
+    public String analyzePage() {
+        return "manage/analyze.html";
+    }
+
+    @RequestMapping("manage/export")
+    public String exportPage() {
+        return "manage/export.html";
     }
 }

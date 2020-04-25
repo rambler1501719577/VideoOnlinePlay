@@ -2,6 +2,7 @@ package com.rambler.controller;
 
 import com.rambler.beans.User;
 import com.rambler.config.Response;
+import com.rambler.config.TableResponse;
 import com.rambler.config.Variable;
 import com.rambler.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,4 +63,11 @@ public class UserController {
     public Response addUser(User user) {
         return userService.addUser(user);
     }
+
+    @RequestMapping(value = "teachers")
+    @ResponseBody
+    public TableResponse teacherList(Integer page,Integer limit){
+        return userService.getTeacherList(page,limit);
+    }
+
 }

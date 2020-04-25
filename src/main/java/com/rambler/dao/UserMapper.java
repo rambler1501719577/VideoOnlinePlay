@@ -2,6 +2,9 @@ package com.rambler.dao;
 
 import com.rambler.beans.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
@@ -18,4 +21,8 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User selectByAccount(String account);
+
+    List<User> getTeacherList(@Param("start") Integer start, @Param("limit") Integer limit);
+
+    List<User> getAllTeachers();
 }

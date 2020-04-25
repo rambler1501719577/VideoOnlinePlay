@@ -1,16 +1,12 @@
 package com.rambler.service;
 
-import com.rambler.beans.Menu;
-import com.rambler.beans.Role;
-import com.rambler.beans.User;
-import com.rambler.beans.UserRole;
+import com.rambler.beans.*;
 import com.rambler.config.Response;
+import com.rambler.config.TableResponse;
 import com.rambler.config.Variable;
-import com.rambler.dao.MenuMapper;
-import com.rambler.dao.RoleMapper;
-import com.rambler.dao.UserMapper;
-import com.rambler.dao.UserRoleMapper;
+import com.rambler.dao.*;
 import com.rambler.utils.IDUtil;
+import com.rambler.vo.TeacherVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +27,7 @@ public class UserService {
     private RoleMapper roleMapper;
 
     @Autowired
-    private MenuMapper menuMapper;
+    private CourseMapper courseMapper;
 
     @Autowired
     private UserRoleMapper userRoleMapper;
@@ -81,4 +77,14 @@ public class UserService {
         return userMapper.selectByPrimaryKey(userId);
     }
 
+    public TableResponse getTeacherList(Integer start, Integer limit) {
+        List<User> list = userMapper.getAllTeachers();
+        List<TeacherVo> result = new ArrayList<>();
+        List<User> temp = userMapper.getTeacherList((start - 1) * limit, limit);
+        for (User user : temp) {
+            List<Course> courses = courseMapper.getTeacherCourse(user.getId());
+            result.add(new TeacherVo(user, courses));
+        }
+        return TableResponse.createSuccessResponse("", result, list.size());
+    }
 }

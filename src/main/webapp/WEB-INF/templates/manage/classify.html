@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../static/layui/css/layui.css">
+    <script src="../../../static/layui/layui.js"></script>
+    <script src="/static/js/jquery3.3.1.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="part" style="padding: 1rem;">
+    <table id="classify" lay-filter="classify"></table>
+</div>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
+    <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
+</script>
+</body>
+<script>
+    $(document).ready(function () {
+        layui.use(['table', 'layer'], function () {
+            var table = layui.table;
+            var layer = layui.layer;
+            var classifyTable = table.render({
+                elem: '#classify'
+                , height: 800
+                , url: '/classify/list/' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    {field: 'id', title: 'ID', width: 300}
+                    , {field: 'name', title: '分类名', width: 400}
+                    , {fixed: 'right', width: 120, align: 'center', toolbar: '#barDemo'}
+                ]]
+            });
+
+            table.on('tool(classify)', function (obj) {
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                if (layEvent === 'update') {
+                    $(".name").val(data.name);
+                    $(".hidden-id").val(data.id);
+                    layer.open({
+                        type: 1,
+                        content: $("#template")
+                    });
+                    $("#save-btn").click(function () {
+                        var param = {
+                            id: $(".hidden-id").val(),
+                            name: $(".name").val()
+                        };
+                        $.post("/classify/update", param, function (response) {
+                            if (response.code === 200) {
+                                layer.msg("更新成功");
+                                layer.closeAll();
+                                classifyTable.reload();
+                            } else {
+                                layer.msg("更新失败");
+                            }
+
+                        })
+                    })
+                } else {
+                    $.post("/classify/delete", {id: data.id}, function (response) {
+                        if (response.code === 200) {
+                            layer.msg("删除成功");
+                            classifyTable.reload();
+                        } else {
+                            layer.msg("删除失败");
+                        }
+                    })
+                }
+            });
+        });
+    });
+</script>
+</html>
+<div style="display:none;padding: 1rem;" id="template">
+    <input type="hidden" class="hidden-id">
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类名</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+                   class="layui-input name">
+        </div>
+    </div>
+    <button class="layui-btn" style="float: right;margin: 15px 0 15px 0;" id="save-btn">保存</button>
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../static/layui/css/layui.css">
+    <script src="../../../static/layui/layui.js"></script>
+    <script src="/static/js/jquery3.3.1.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="part" style="padding: 1rem;">
+    <table id="video" lay-filter="video"></table>
+</div>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
+</script>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        layui.use(['table', 'layer'], function () {
+            var table = layui.table;
+            var layer = layui.layer;
+            var classifyTable = table.render({
+                elem: '#video'
+                , height: 800
+                , url: '/course/video/' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    {field: 'id', title: 'ID', width: 300}
+                    , {field: 'name', title: '名称', width: 400}
+                    , {field: 'src', title: '播放地址', width: 400}
+                    , {field: 'auth', title: '上传教师', width: 400}
+                    , {fixed: 'right', width: 120, align: 'center', toolbar: '#barDemo'}
+                ]]
+            });
+
+            table.on('tool(video)', function (obj) {
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                if (layEvent === 'delete') {
+                    $.post("/course/removeVideo", {id: data.id}, function (response) {
+                        if (response.code === 200) {
+                            classifyTable.reload();
+                        } else {
+                            layer.msg("删除失败");
+                        }
+                    })
+                }
+            });
+        });
+    });
+</script>

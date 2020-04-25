@@ -2,6 +2,7 @@ package com.rambler.dao;
 
 import com.rambler.beans.Course;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -24,4 +25,8 @@ public interface CourseMapper {
     List<Course> getCourseByUser(String userId);
 
     List<Course> getTeacherCourse(String teacherId);
+
+    List<Course> selectList(@Param("start") Integer start, @Param("limit") Integer limit);
+
+    List<Course> selectAll();
 }

@@ -4,9 +4,11 @@ import com.rambler.beans.Classify;
 import com.rambler.beans.Course;
 import com.rambler.beans.User;
 import com.rambler.config.Response;
+import com.rambler.config.TableResponse;
 import com.rambler.service.ClassifyService;
 import com.rambler.service.CourseService;
 import com.rambler.utils.BasicUtil;
+import com.rambler.vo.VideoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,4 +73,21 @@ public class CourseController extends BaseController {
         List<Course> list = courseService.getCourseByUserId(user.getId());
         return Response.createSuccessResponse(list);
     }
+
+    @ResponseBody
+    @RequestMapping("video")
+    public TableResponse getVideoList(Integer page, Integer limit) {
+        return courseService.getVideoList(page, limit);
+    }
+
+    @ResponseBody
+    @RequestMapping("removeVideo")
+    public Response getUserCourse(String id) {
+        int result = courseService.removeVideo(id);
+        if (result > 0) {
+            return Response.createSuccessResponse("success");
+        }
+        return Response.createErrorResponse("error");
+    }
+
 }
