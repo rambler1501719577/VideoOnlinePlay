@@ -33,4 +33,8 @@ public class ClassifyService {
     public int delete(String id) {
         return classifyMapper.deleteByPrimaryKey(id);
     }
+
+    public Classify getClassifyById(String id){
+        return classifyMapper.selectByPrimaryKey(id);
+    }
 }
