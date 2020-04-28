@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>评价详情</title>
+    <title>上传课程</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../../static/layui/css/layui.css">
     <script src="../../../static/layui/layui.js"></script>
@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="../../../static/css/common/footer.css">
     <script src="/static/js/jquery3.3.1.js"></script>
     <script src="/static/js/base.js"></script>
+    <style>
+        .layui-form-label {
+            text-align: left;
+            padding-left: 0 !important;
+            float: none;
+        }
+    </style>
 </head>
 <body>
 <div class="rambler-header">
@@ -34,84 +41,77 @@
     </div>
 </div>
 <div class="content" style="padding:2rem;margin:auto;width:80%">
-    <form class="layui-form layui-form-pane" lay-filter="questionnaire">
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">1.您现在读的是：</label>
-            <div class="question-body">
-                <input type="radio" name="question1" value="A" title="A : 大专"><br>
-                <input type="radio" name="question1" value="B" title="B : 本科"><br>
-                <input type="radio" name="question1" value="C" title="C : 其他"><br>
+    <form class="layui-form" action="/course/add" enctype="multipart/form-data" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程标题</label>
+            <div class="">
+                <input type="text" name="name" required placeholder="" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">2.您认为目前的课程设置能达到您学习深造的目的吗?</label>
-            <div class="question-body">
-                <input type="radio" name="question2" value="A" title="A : 能"><br>
-                <input type="radio" name="question2" value="B" title="B : 不能"><br>
-                <input type="radio" name="question2" value="C" title="C : 作用不大"><br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程描述</label>
+            <div class="">
+                <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">3.如果您学习深造的目的是为了提高实操能力，您同意下面的哪种做法：</label>
-            <div class="question-body">
-                <input type="radio" name="question3" value="A" title="A : 单独开设会计模拟实训课程"><br>
-                <input type="radio" name="question3" value="B" title="B : 完善教学内容，加入会计实操训练部分"><br>
-                <input type="radio" name="question3" value="C" title="C : 以上都同意"><br>
-            </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程分类</label>
+            <select name="classify" id="select">
+                <option value="">请选择课程分类</option>
+            </select>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">4.目前的教学内容能否满足会计职称考试需要？</label>
-            <div class="question-body">
-                <input type="radio" name="question4" value="A" title="A : 能"><br>
-                <input type="radio" name="question4" value="B" title="B : 不能"><br>
-                <input type="radio" name="question4" value="C" title="C : 不知道"><br>
-            </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面图片</label>
+            <input type="file" name="coverImage"/>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">5.您觉得本专业课程的实用性如何 </label>
-            <div class="question-body">
-                <input type="radio" name="question5" value="A" title="A : 非常强　"><br>
-                <input type="radio" name="question5" value="B" title="B : 比较强"><br>
-                <input type="radio" name="question5" value="C" title="C : 不太强"><br>
-                <input type="radio" name="question5" value="D" title="D : 没实用性"><br>
-            </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">视频</label>
+            <input type="file" name="video"/>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">6.您觉得经过学习，实践能力有所提高吗？ </label>
-            <div class="question-body">
-                <input type="radio" name="question6" value="A" title="A : 有较大提高"><br>
-                <input type="radio" name="question6" value="B" title="B : 一般"><br>
-                <input type="radio" name="question6" value="C" title="C : 提高程度较小 "><br>
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">7. 您觉得所学专业课对掌握专业技能是否有帮助 </label>
-            <div class="question-body">
-                <input type="radio" name="question7" value="A" title="A : 有很大帮助"><br>
-                <input type="radio" name="question7" value="B" title="B : 一般"><br>
-                <input type="radio" name="question7" value="C" title="C : 帮助较小"><br>
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text" style="margin-bottom: 10px;">
-            <label class="layui-form-label">8.您对本课程有何意见和建议</label>
-            <div class="layui-input-block">
-                <textarea name="question8" class="layui-textarea"></textarea>
-            </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn" type="submit" id="save">确定上传</button>
         </div>
     </form>
 
     <script>
         $(document).ready(function () {
             layui.use(['form', 'element', 'layer'], function () {
-                var getIdByParam = function () {
-                    var url = location.href;
-                    var allParam = url.split("?")[1];
-                    return allParam.split("=")[1];
-                };
                 var form = layui.form;
-                $.get("/survey/get",{id:getIdByParam()}, function (response) {
-                    form.val('questionnaire', response.data);
+                $.get("/classify/all", function (response) {
+                    if (response.code === 200) {
+                        var data = response.data;
+                        for (var i = 0; i < data.length; i++) {
+                            $("#select").append($("<option value='" + data[i].id + "'>" + data[i].name + "</option>"));
+                        }
+                        form.render();
+                    }
                 });
+                //监听提交
+                // $("#save").click(function () {
+                //     debugger;
+                //     var data = form.val('course');
+                //     var formData = new FormData();
+                //     formData.append("classify",data.classify);
+                //     formData.append("title",data.title);
+                //     formData.append("content",data.content);
+                //     formData.append("coverImage",data.coverImage);
+                //     formData.append("video",data.video);
+                //     $.ajax({
+                //         url: "/course/add",
+                //         processData: false,
+                //         data: formData,
+                //         type: 'POST',
+                //         headers: {
+                //             "Content-Type": "multipart/form-data"
+                //         },
+                //         success: function (response) {
+                //             console.log(response);
+                //         }
+                //     });
+                // })
             });
         });
     </script>

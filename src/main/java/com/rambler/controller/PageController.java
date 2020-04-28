@@ -23,7 +23,7 @@ public class PageController {
     @RequestMapping("detail")
     public String detailPage(HttpServletRequest request) {
         User user = BasicUtil.getCurrentUser(request);
-        if (user == null) {
+        if (user.getId() == null) {
             return "common/forbidden.html";
         }
         return "index/detail.html";
@@ -106,6 +106,12 @@ public class PageController {
         return "manage/classify.html";
     }
 
+    @RequestMapping("course/addForm")
+    public String addForm(){
+        return "index/courseForm";
+    }
+
+
     @RequestMapping("manage/tax")
     public String taxPage() {
         return "manage/tax.html";
@@ -121,8 +127,14 @@ public class PageController {
         return "manage/analyze.html";
     }
 
-    @RequestMapping("manage/export")
-    public String exportPage() {
-        return "manage/export.html";
+    @RequestMapping("manage/courseDelete")
+    public String deletePage() {
+        return "manage/courseDelete.html";
     }
+
+    @RequestMapping("addCourse")
+    public String addCourse(){
+        return "index/addCourse.html";
+    }
+
 }

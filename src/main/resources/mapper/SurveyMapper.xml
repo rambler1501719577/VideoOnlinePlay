@@ -20,6 +20,13 @@
     question7, question8,time
   </sql>
 
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from survey
+    </select>
+
+    <select id="getPageData" resultMap="BaseResultMap">
+        select * from survey limit #{start},#{limit}
+    </select>
     <select id="getSurveyByCourseId" resultMap="BaseResultMap">
     select * from survey where course_id = #{courseId}
   </select>
@@ -41,11 +48,11 @@
     insert into survey (id, course_id, user_id, 
       question1, question2, question3, 
       question4, question5, question6, 
-      question7, question8)
+      question7, question8,time)
     values (#{id,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{question1,jdbcType=VARCHAR}, #{question2,jdbcType=VARCHAR}, #{question3,jdbcType=VARCHAR}, 
       #{question4,jdbcType=VARCHAR}, #{question5,jdbcType=VARCHAR}, #{question6,jdbcType=VARCHAR}, 
-      #{question7,jdbcType=VARCHAR}, #{question8,jdbcType=VARCHAR})
+      #{question7,jdbcType=VARCHAR}, #{question8,jdbcType=VARCHAR},#{time})
   </insert>
     <insert id="insertSelective" parameterType="com.rambler.beans.Survey">
         insert into survey

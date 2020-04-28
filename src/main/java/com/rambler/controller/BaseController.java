@@ -1,10 +1,13 @@
 package com.rambler.controller;
 
 import com.rambler.beans.User;
+import com.rambler.config.Response;
 import com.rambler.config.Variable;
 import com.rambler.utils.BasicUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +27,18 @@ public class BaseController {
         return "common/login.html";
     }
 
-    User getSessionUser(HttpServletRequest request){
+    User getSessionUser(HttpServletRequest request) {
         return BasicUtil.getCurrentUser(request);
+    }
+
+    @RequestMapping(value = "mkTempSession", method = RequestMethod.POST)
+    @ResponseBody
+    public Response mkTempSession(HttpServletRequest request) {
+        User user = new User();
+        user.setName("游客");
+        user.setRoleId("visitor");
+        request.getSession().setAttribute(Variable.CURRENT_USER, user);
+        return Response.createSuccessResponse("成功");
     }
 
 }

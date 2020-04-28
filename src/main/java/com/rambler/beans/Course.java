@@ -22,6 +22,7 @@ public class Course {
     private Integer studyTimes;
 
     private String coverImage;
+    private Integer status;
 
     public String getId() {
         return id;
@@ -101,5 +102,13 @@ public class Course {
 
     public void setCoverImage(String coverImage) {
         this.coverImage = coverImage;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

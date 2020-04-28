@@ -37,4 +37,8 @@ public class ClassifyService {
     public Classify getClassifyById(String id){
         return classifyMapper.selectByPrimaryKey(id);
     }
+
+    public List<Classify> getAll(){
+        return classifyMapper.selectAll();
+    }
 }

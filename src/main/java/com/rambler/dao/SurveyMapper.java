@@ -23,4 +23,8 @@ public interface SurveyMapper {
     List<Survey> selectByUser(@Param("userId") String userId, @Param("courseId") String courseId);
 
     List<Survey> getSurveyByCourseId(String courseId);
+
+    List<Survey> getAll();
+
+    List<Survey> getPageData(@Param("start") Integer start, @Param("limit") Integer limit);
 }

@@ -28,5 +28,11 @@ public interface CourseMapper {
 
     List<Course> selectList(@Param("start") Integer start, @Param("limit") Integer limit);
 
+    List<Course> selectRequestList(@Param("start") Integer start, @Param("limit") Integer limit);
+
     List<Course> selectAll();
+
+    List<Course> selectRequestAll();
+
+    int updateApply(@Param("id") String id,@Param("status")int status);
 }

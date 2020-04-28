@@ -23,6 +23,7 @@ public class ClassifyController {
         return classifyService.getAllClassify(page, limit);
     }
 
+
     @RequestMapping("update")
     @ResponseBody
     public Response update(String id, String name) {
@@ -43,4 +44,13 @@ public class ClassifyController {
         }
         return Response.createErrorResponse("失败");
     }
+
+
+    @RequestMapping("all")
+    @ResponseBody
+    public Response getAll() {
+        List<Classify> list = classifyService.getAll();
+        return Response.createSuccessResponse(list);
+    }
+
 }

@@ -9,3 +9,13 @@ $(".login-btn").click(function () {
         }
     })
 });
+
+$("#no-login").click(function () {
+    $.post("/mkTempSession", {}, function (response) {
+        if (response.code === 200) {
+            window.location.href = "http://localhost:8080/";
+        } else {
+            alert("服务器出现故障");
+        }
+    })
+});

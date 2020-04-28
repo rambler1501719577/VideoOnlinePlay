@@ -3,6 +3,7 @@ package com.rambler.controller;
 import com.rambler.beans.Survey;
 import com.rambler.beans.User;
 import com.rambler.config.Response;
+import com.rambler.config.TableResponse;
 import com.rambler.service.SurveyService;
 import com.rambler.utils.BasicUtil;
 import com.rambler.utils.IDUtil;
@@ -56,7 +57,19 @@ public class SurveyController extends BaseController {
     @RequestMapping(value = "get", method = RequestMethod.GET)
     @ResponseBody
     public Response get(String id) {
-        Survey survey =  surveyService.get(id);
+        Survey survey = surveyService.get(id);
         return Response.createSuccessResponse(survey);
+    }
+
+    @RequestMapping("tableList")
+    @ResponseBody
+    public TableResponse getList(Integer page, Integer limit) {
+        return surveyService.getPageList(page, limit);
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    @ResponseBody
+    public Response deleteSurvey(String id) {
+        return surveyService.delete(id);
     }
 }

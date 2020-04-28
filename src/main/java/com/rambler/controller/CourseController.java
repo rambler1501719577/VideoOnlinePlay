@@ -13,9 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -88,6 +92,60 @@ public class CourseController extends BaseController {
             return Response.createSuccessResponse("success");
         }
         return Response.createErrorResponse("error");
+    }
+
+    @ResponseBody
+    @RequestMapping("tableList")
+    public TableResponse getTableList(Integer page, Integer limit) {
+        return courseService.getPageData(page, limit);
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public Response deleteCourse(String id) {
+        int result = courseService.deleteCourse(id);
+        if (result > 0) {
+            return Response.createSuccessResponse("删除成功");
+        }
+        return Response.createErrorResponse("删除失败");
+    }
+
+    @ResponseBody
+    @RequestMapping("requestTableList")
+    public TableResponse getRequestTableList(Integer page, Integer limit) {
+        return courseService.getRequestPageData(page, limit);
+    }
+
+    @ResponseBody
+    @RequestMapping("agree")
+    public Response agree(String id) {
+        // 1表示通过
+        int result = courseService.apply(id, 0);
+        if (result > 0) {
+            return Response.createSuccessResponse("审批成功");
+        }
+        return Response.createErrorResponse("审批失败");
+    }
+
+    @ResponseBody
+    @RequestMapping("disagree")
+    public Response disagree(String id) {
+        // 不通过就是删除了!!
+        int result = courseService.apply(id, 1);
+        if (result > 0) {
+            return Response.createSuccessResponse("审批成功");
+        }
+        return Response.createErrorResponse("审批失败");
+    }
+
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String addCourse(HttpServletRequest request, String classify, String title, String description, @RequestParam(value = "video", required = false) MultipartFile video,
+                          @RequestParam(value = "coverImage", required = false) MultipartFile coverImage) {
+        int result = courseService.addNewCourse(classify,title,description,video,coverImage,request);
+        if(result>0){
+            return "index/alert.html";
+        }
+        return "index/error.html";
     }
 
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="part" style="padding: 1rem;">
-    <table id="survey" lay-filter="survey"></table>
+    <table id="course" lay-filter="course"></table>
 </div>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
@@ -20,30 +20,28 @@
         layui.use(['table', 'layer'], function () {
             var table = layui.table;
             var layer = layui.layer;
-            var surveyTable = table.render({
-                elem: '#survey'
+            var courseTable = table.render({
+                elem: '#course'
                 , height: 800
-                , url: '/survey/tableList' //数据接口
+                , url: '/course/tableList' //数据接口
                 , page: true //开启分页
                 , cols: [[ //表头
                     {field: 'id', title: 'ID', width: 300}
-                    , {field: 'question1', title: '问题1', width: 150}
-                    , {field: 'question2', title: '问题2', width: 150}
-                    , {field: 'question3', title: '问题3', width: 150}
-                    , {field: 'question4', title: '问题4', width: 150}
-                    , {field: 'question5', title: '问题5', width: 150}
-                    , {field: 'question6', title: '问题6', width: 150}
-                    , {field: 'question7', title: '问题7', width: 150}
-                    , {field: 'question8', title: '问题8', width: 150}
+                    , {field: 'name', title: '课程名', width: 150}
+                    , {field: 'description', title: '课程描述', width: 350}
+                    , {field: 'createTime', title: '课程创建时间', width: 150}
+                    , {field: 'playSrc', title: '播放地址', width: 300}
+                    , {field: 'studyTimes', title: '学习次数', width: 80}
+                    , {field: 'coverImage', title: '封面地址', width: 200}
                     , {fixed: 'right', width: 80, align: 'center', toolbar: '#barDemo'}
                 ]]
             });
-            table.on('tool(survey)', function (obj) {
+            table.on('tool(course)', function (obj) {
                 var data = obj.data; //获得当前行数据
-                $.post("/survey/delete", {id: data.id}, function (response) {
+                $.post("/course/delete", {id: data.id}, function (response) {
                     if (response.code === 200) {
                         layer.msg("删除成功");
-                        surveyTable.reload();
+                        courseTable.reload();
                     } else {
                         layer.msg("删除失败");
                     }
