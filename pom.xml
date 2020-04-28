@@ -19,7 +19,7 @@
     <!-- 控制spring版本,全局引用 -->
     <spring.version>5.0.3.RELEASE</spring.version>
     <mybatis.version>3.4.4</mybatis.version>
-    <commons-fileupload.version>1.3</commons-fileupload.version>
+    <commons-fileupload.version>1.3.3</commons-fileupload.version>
     <commons-io.version>2.4</commons-io.version>
     <!-- spring4支持json2 -->
   </properties>
