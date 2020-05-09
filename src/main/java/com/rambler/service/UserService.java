@@ -32,15 +32,51 @@ public class UserService {
     @Autowired
     private UserRoleMapper userRoleMapper;
 
+    public Response delete(String id) {
+        return userMapper.deleteByPrimaryKey(id) > 0 ? Response.createSuccessResponse(null) : Response.createErrorResponse("审批成功");
+    }
+
+    public Response updateStatus(String id, int status) {
+        User user = userMapper.selectByPrimaryKey(id);
+        if (user != null) {
+            user.setStatus(0);
+            userMapper.updateByPrimaryKeySelective(user);
+            return Response.createSuccessResponse(user);
+        } else {
+            return Response.createErrorResponse("审批失败");
+        }
+    }
+
+    public User register(String account, String password, String name, String role) {
+        User user = new User();
+        user.setId(IDUtil.uuid());
+        // 教师需要审核, 学员不用审核
+        if (role.equalsIgnoreCase("teacher")) {
+            user.setStatus(1);
+        } else {
+            user.setStatus(0);
+        }
+        user.setRoleId(role);
+        user.setAccount(account);
+        user.setName(name);
+        user.setPassword(password);
+        user.setHeader("/static/upload/images/" + role + ".png");
+        int result = userMapper.insertSelective(user);
+        if (result > 0) {
+            return user;
+        }
+        return null;
+    }
+
     public Response login(String account, String password, HttpServletRequest request) {
         User user = userMapper.selectByAccount(account);
         HttpSession session = request.getSession();
         if (null != user) {
-            if (user.getPassword().equals(password)) {
+            if (user.getPassword().equals(password) && user.getStatus() == 0) {
                 session.setAttribute(Variable.CURRENT_USER, user);
                 return Response.createSuccessResponse(user);
             } else {
-                return Response.createErrorResponse("密码错误");
+                return Response.createErrorResponse("密码错误或者未通过审核");
             }
         }
         return null;
@@ -78,13 +114,26 @@ public class UserService {
     }
 
     public TableResponse getTeacherList(Integer start, Integer limit) {
-        List<User> list = userMapper.getAllTeachers();
+        List<User> list = userMapper.getAllTeachers(0);
         List<TeacherVo> result = new ArrayList<>();
-        List<User> temp = userMapper.getTeacherList((start - 1) * limit, limit);
+        List<User> temp = userMapper.getTeacherList((start - 1) * limit, limit, 0);
         for (User user : temp) {
             List<Course> courses = courseMapper.getTeacherCourse(user.getId());
             result.add(new TeacherVo(user, courses));
         }
         return TableResponse.createSuccessResponse("", result, list.size());
     }
+
+    public TableResponse getApplyTeachers(Integer start, Integer limit) {
+        List<User> list = userMapper.getAllTeachers(1);
+        List<TeacherVo> result = new ArrayList<>();
+        List<User> temp = userMapper.getTeacherList((start - 1) * limit, limit, 1);
+        for (User user : temp) {
+            List<Course> courses = courseMapper.getTeacherCourse(user.getId());
+            result.add(new TeacherVo(user, courses));
+        }
+        return TableResponse.createSuccessResponse("", result, list.size());
+    }
+
+
 }

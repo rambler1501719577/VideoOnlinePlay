@@ -11,19 +11,19 @@
         <result column="sex" property="sex" jdbcType="VARCHAR"/>
         <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
         <result column="mail" property="mail" jdbcType="VARCHAR"/>
-        <result column="level" property="level" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
         <result column="header" property="header" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, role_id, account, password, name, age, sex, telephone, mail, level, header
+    id, role_id, account, password, name, age, sex, telephone, mail, status, header
   </sql>
 
     <select id="getAllTeachers" resultMap="BaseResultMap">
-    select * from user where role_id = 'teacher'
+    select * from user where role_id = 'teacher' and status = #{status}
   </select>
 
     <select id="getTeacherList" resultMap="BaseResultMap">
-    select * from user where role_id = 'teacher' limit #{start},#{limit}
+    select * from user where role_id = 'teacher' and status = #{status} limit #{start},#{limit}
   </select>
 
     <select id="selectByAccount" resultMap="BaseResultMap">
@@ -45,11 +45,11 @@
     insert into user (id, role_id, account, 
       password, name, age, 
       sex, telephone, mail, 
-      level, header)
+      status, header)
     values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
       #{sex,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, 
-      #{level,jdbcType=INTEGER}, #{header,jdbcType=VARCHAR})
+      #{status,jdbcType=INTEGER}, #{header,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.rambler.beans.User">
         insert into user
@@ -81,8 +81,8 @@
             <if test="mail != null">
                 mail,
             </if>
-            <if test="level != null">
-                level,
+            <if test="status != null">
+                status,
             </if>
             <if test="header != null">
                 header,
@@ -116,8 +116,8 @@
             <if test="mail != null">
                 #{mail,jdbcType=VARCHAR},
             </if>
-            <if test="level != null">
-                #{level,jdbcType=INTEGER},
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
             </if>
             <if test="header != null">
                 #{header,jdbcType=VARCHAR},
@@ -151,8 +151,8 @@
             <if test="mail != null">
                 mail = #{mail,jdbcType=VARCHAR},
             </if>
-            <if test="level != null">
-                level = #{level,jdbcType=INTEGER},
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
             </if>
             <if test="header != null">
                 header = #{header,jdbcType=VARCHAR},
@@ -170,7 +170,7 @@
       sex = #{sex,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       mail = #{mail,jdbcType=VARCHAR},
-      level = #{level,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       header = #{header,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

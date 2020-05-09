@@ -19,7 +19,7 @@ public class User {
 
     private String mail;
 
-    private Integer level;
+    private Integer status;
 
     private String header;
 
@@ -95,12 +95,12 @@ public class User {
         this.mail = mail == null ? null : mail.trim();
     }
 
-    public Integer getLevel() {
-        return level;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getHeader() {

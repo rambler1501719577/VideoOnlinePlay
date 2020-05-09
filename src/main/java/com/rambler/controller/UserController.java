@@ -43,6 +43,21 @@ public class UserController {
         }
     }
 
+    @RequestMapping("register")
+    @ResponseBody
+    public Response register(String account, String password, String name, String role, HttpServletRequest request) {
+        User result = userService.register(account, password, name, role);
+        if (result != null) {
+            if (role.equalsIgnoreCase("student")) {
+                HttpSession session = request.getSession();
+                session.setAttribute(Variable.CURRENT_USER, result);
+                return Response.createSuccessResponse("成功");
+            }
+            return Response.createSuccessResponse("成功");
+        }
+        return Response.createErrorResponse("注册失败");
+    }
+
     @RequestMapping(value = "quit")
     public String quitCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -66,8 +81,25 @@ public class UserController {
 
     @RequestMapping(value = "teachers")
     @ResponseBody
-    public TableResponse teacherList(Integer page,Integer limit){
-        return userService.getTeacherList(page,limit);
+    public TableResponse teacherList(Integer page, Integer limit) {
+        return userService.getTeacherList(page, limit);
+    }
+
+    @RequestMapping(value = "teachers/apply")
+    @ResponseBody
+    public TableResponse applyTeacherList(Integer page, Integer limit) {
+        return userService.getApplyTeachers(page, limit);
+    }
+
+    @RequestMapping("/teacherApply/agree")
+    @ResponseBody
+    public Response agree(String id,HttpServletRequest request){
+       return userService.updateStatus(id,0);
+    }
+    @RequestMapping("/teacherApply/disagree")
+    @ResponseBody
+    public Response disagree(String id){
+        return userService.delete(id);
     }
 
 }

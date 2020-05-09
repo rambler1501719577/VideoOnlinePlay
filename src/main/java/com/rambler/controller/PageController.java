@@ -106,8 +106,13 @@ public class PageController {
         return "manage/classify.html";
     }
 
+    @RequestMapping("manage/manageTeacher")
+    public String manageTeacherPage() {
+        return "manage/manageTeacher.html";
+    }
+
     @RequestMapping("course/addForm")
-    public String addForm(){
+    public String addForm() {
         return "index/courseForm";
     }
 
@@ -133,7 +138,7 @@ public class PageController {
     }
 
     @RequestMapping("addCourse")
-    public String addCourse(){
+    public String addCourse() {
         return "index/addCourse.html";
     }
 

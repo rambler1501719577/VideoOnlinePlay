@@ -139,10 +139,10 @@ public class CourseController extends BaseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String addCourse(HttpServletRequest request, String classify, String title, String description, @RequestParam(value = "video", required = false) MultipartFile video,
-                          @RequestParam(value = "coverImage", required = false) MultipartFile coverImage) {
-        int result = courseService.addNewCourse(classify,title,description,video,coverImage,request);
-        if(result>0){
+    public String addCourse(HttpServletRequest request, String classify, String name, String description, @RequestParam(value = "video", required = false) MultipartFile video,
+                            @RequestParam(value = "coverImage", required = false) MultipartFile coverImage) {
+        int result = courseService.addNewCourse(classify, name, description, video, coverImage, request);
+        if (result > 0) {
             return "index/alert.html";
         }
         return "index/error.html";

@@ -22,7 +22,8 @@ public interface UserMapper {
 
     User selectByAccount(String account);
 
-    List<User> getTeacherList(@Param("start") Integer start, @Param("limit") Integer limit);
+    List<User> getTeacherList(@Param("start") Integer start, @Param("limit") Integer limit,@Param("status") int status);
 
-    List<User> getAllTeachers();
+    List<User> getAllTeachers(int status);
+
 }

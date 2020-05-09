@@ -27,6 +27,11 @@ public class BaseController {
         return "common/login.html";
     }
 
+    @RequestMapping("/page/register")
+    public String registerPage(){
+        return "common/register.html";
+    }
+
     User getSessionUser(HttpServletRequest request) {
         return BasicUtil.getCurrentUser(request);
     }
